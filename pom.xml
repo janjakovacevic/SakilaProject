@@ -21,29 +21,34 @@
     </properties>
 
     <dependencies>
+             
+    <!--actuator--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+             
+    <!--thymeleaf--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+             
+    <!--web--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+             
+    <!--devtools--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+             
+    <!--testing-->            
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -56,6 +61,7 @@
             <artifactId>bootstrap</artifactId>
             <version>4.5.2</version>
         </dependency>
+             
     <!--thymeleaf layout-->
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
