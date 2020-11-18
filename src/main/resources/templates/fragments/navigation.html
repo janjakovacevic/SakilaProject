@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <title>Header</title>
@@ -29,7 +29,7 @@
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a class="nav-item nav-link active" href="/login">Login</a>
+						<a class="nav-item nav-link active" th:href="@{/login}">Login</a>
 					</li>
 				</ul>
 			</div>
