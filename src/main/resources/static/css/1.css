@@ -74,13 +74,3 @@ th {
   background-color: darkred;
   color: white;
 }
-
-.footer {
-  background-color: darkred;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
