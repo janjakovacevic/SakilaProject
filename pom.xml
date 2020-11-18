@@ -15,7 +15,6 @@
     <packaging>war</packaging>
     <name>sakilaproject</name>
     <description>Creating a movie website.</description>
-
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -25,7 +24,7 @@
     <!--actuator--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
              
     <!--thymeleaf--> 
@@ -47,12 +46,27 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-             
-    <!--testing-->            
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    <!--testing-->        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     <!--bootstrap-->
@@ -67,7 +81,6 @@
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -78,5 +91,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
