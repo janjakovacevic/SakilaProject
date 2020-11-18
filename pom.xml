@@ -8,6 +8,7 @@
         <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.sparta.engineering72</groupId>
     <artifactId>sakilaproject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -19,19 +20,26 @@
     </properties>
 
     <dependencies>
+             
+    <!--actuator--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+             
+    <!--thymeleaf--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+             
+    <!--web--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+             
+    <!--devtools--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -48,6 +56,7 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
+    <!--testing-->        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -59,6 +68,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+    <!--bootstrap-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+             
+    <!--thymeleaf layout-->
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -69,6 +91,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
