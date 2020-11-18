@@ -20,13 +20,20 @@
     </properties>
 
     <dependencies>
-             
-    <!--actuator--> 
+
+    <!--actuator-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-             
+
+    <!-- tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
     <!--thymeleaf--> 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,16 +53,20 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+    <!-- mysql connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+    <!-- jpa -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
     <!--testing-->        
         <dependency>
             <groupId>org.springframework.boot</groupId>

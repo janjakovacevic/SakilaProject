@@ -12,8 +12,13 @@ public class MainController {
     }
 
     @RequestMapping(value="/login")
-    public String about() {
+    public String login() {
         return "login";
+    }
+
+    @RequestMapping(value="/account")
+    public String account(){
+        return "account";
     }
 
 }
