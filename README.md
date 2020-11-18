@@ -1,3 +1,3 @@
 # TheSakilaProject
 
-create an awesome README.md here :sunglasses:
+Create an awesome README.md here :sunglasses:
