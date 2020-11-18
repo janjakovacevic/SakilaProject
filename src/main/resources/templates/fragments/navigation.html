@@ -3,38 +3,23 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Header</title>
+<title>NavBar</title>
 </head>
 
 <body>
 
-	<nav class="navbar navbar-default" th:fragment="navigation">
+	<div class="fa-cc-mastercard" th:fragment="navigation">
+		<ul>
+			<li><a class="active" href="/home">Home</a></li>
+			<li><a href="/actors">Actors</a></li>
+			<li><a href="/films">Films</a></li>
+			<li style="float:right"><a href="/login">Login</a></li>
+		</ul>
+		<br/>
+		<br/>
+		<br/>
+	</div>
 
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbarNavAltMarkup"
-					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">Home </a>
-			</div>
-
-			<div class="col-md-6 col-md-offset-2">
-				<input type="text" placeholder="Search..." name="search">
-			</div>
-
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a class="nav-item nav-link active" th:href="@{/login}">Login</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 
 </body>
 

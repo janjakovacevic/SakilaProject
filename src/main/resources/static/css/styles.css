@@ -16,7 +16,22 @@ label{
   display: inline-block;
 }
 
-input[type=text], input[type=password] {
+.hyperlink-text{
+  font-weight: bold;
+  color: #111111;
+  width: 100%;
+  margin: 8px 0;
+  display: inline-block;
+  align-content: end;
+  text-align: left;
+}
+
+.hyperlink-text:hover{
+  color: darkred;
+}
+
+
+input[type=text], input[type=password], .selection-menu {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -52,6 +67,12 @@ input[type=text], input[type=password] {
   color: white;
 }
 
+.no-border{
+  padding: 12px 20px;
+  border: none;
+  padding: 8px;
+}
+
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -61,6 +82,10 @@ table {
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
+}
+
+tr{
+  border: 1px solid #ddd;
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
@@ -83,4 +108,36 @@ th {
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+/*
+ nav bar styling
+*/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: darkred;
 }

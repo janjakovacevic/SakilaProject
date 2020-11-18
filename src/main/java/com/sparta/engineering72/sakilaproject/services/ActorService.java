@@ -30,4 +30,12 @@ public class ActorService {
         return actorRepository.findActorsByFirstNameAndLastName(firstName, lastName);
     }
 
+    public List<Actor> getActorsByFirstName(String firstName){
+        return actorRepository.findActorsByFirstName(firstName);
+    }
+
+    public List<Actor> getActorsByLastName(String lastName){
+        return actorRepository.findActorsByLastName(lastName);
+    }
+
 }
