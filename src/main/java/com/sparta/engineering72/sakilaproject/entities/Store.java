@@ -14,7 +14,7 @@ public class Store implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="store_id", unique=true, nullable=false)
-	private byte storeId;
+	private int storeId;
 
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
@@ -44,11 +44,11 @@ public class Store implements Serializable {
 	public Store() {
 	}
 
-	public byte getStoreId() {
+	public int getStoreId() {
 		return this.storeId;
 	}
 
-	public void setStoreId(byte storeId) {
+	public void setStoreId(int storeId) {
 		this.storeId = storeId;
 	}
 
