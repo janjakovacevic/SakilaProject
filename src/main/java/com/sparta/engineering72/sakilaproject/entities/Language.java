@@ -14,7 +14,7 @@ public class Language implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="language_id", unique=true, nullable=false)
-	private byte languageId;
+	private int languageId;
 
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
@@ -33,11 +33,11 @@ public class Language implements Serializable {
 	public Language() {
 	}
 
-	public byte getLanguageId() {
+	public int getLanguageId() {
 		return this.languageId;
 	}
 
-	public void setLanguageId(byte languageId) {
+	public void setLanguageId(int languageId) {
 		this.languageId = languageId;
 	}
 
