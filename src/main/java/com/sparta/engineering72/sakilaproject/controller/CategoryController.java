@@ -2,6 +2,7 @@ package com.sparta.engineering72.sakilaproject.controller;
 
 import com.sparta.engineering72.sakilaproject.entities.Category;
 import com.sparta.engineering72.sakilaproject.entities.Film;
+import com.sparta.engineering72.sakilaproject.entities.FilmCategory;
 import com.sparta.engineering72.sakilaproject.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +16,11 @@ import java.util.List;
 public class CategoryController {
 
     private CategoryService categoryService;
-    private FilmService filmService;
     private FilmCategoryService filmCategoryService;
 
     @Autowired
-    public CategoryController(CategoryService categoryService, FilmService filmService, FilmCategoryService filmCategoryService) {
+    public CategoryController(CategoryService categoryService, FilmCategoryService filmCategoryService) {
         this.categoryService = categoryService;
-        this.filmService = filmService;
         this.filmCategoryService = filmCategoryService;
     }
 
