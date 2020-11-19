@@ -13,22 +13,32 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OwnerDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
+    @Autowired
+    CustomerRepository customerRepository;
     @Autowired
     StaffRepository staffRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Staff staff = staffRepository.getStaffByUsername(username);
-        if(staff == null) {
-            throw new UsernameNotFoundException("Could not find user");
-        }
+    public UserDetails loadUserByUsername(String anyUsername) throws UsernameNotFoundException {
+        Customer customer = customerRepository.getCustomerByEmail(anyUsername);
+        Staff staff = staffRepository.getStaffByUsername(anyUsername);
 
-        User.UserBuilder builder = null;
-        builder = org.springframework.security.core.userdetails.User.withUsername(username);
-        builder.password(new BCryptPasswordEncoder().encode((staff.getFirstName() + staff.getLastName()).toLowerCase()));
-        builder.roles("ADMIN");
-        return builder.build();
+        User.UserBuilder builder;
+
+        if(customer == null && staff == null) {
+            throw new UsernameNotFoundException("Could not find user");
+        } else {
+            builder = User.withUsername(anyUsername);
+            if(staff != null){
+                builder.password(new BCryptPasswordEncoder().encode((staff.getPassword())));
+                    builder.roles("ADMIN");
+            } else {
+                builder.password(new BCryptPasswordEncoder().encode(String.valueOf(customer.getCustomerId())));
+                    builder.roles("USER");
+            }
+            return builder.build();
+        }
     }
 }

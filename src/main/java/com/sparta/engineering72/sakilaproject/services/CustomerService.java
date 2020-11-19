@@ -25,7 +25,6 @@ public class CustomerService {
     }
 
     public Customer getCustomerByEmail(String email){
-
         return customerRepository.getCustomerByEmail(email);
     }
 }

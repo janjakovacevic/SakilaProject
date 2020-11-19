@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,24 +22,24 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers")
-    public String getAllCustomers(ModelMap modelMap){
-        modelMap.addAttribute("customers", customerService.getAllCustomers());
-        return "restricted/customers";
-    }
+//    @GetMapping("/customers")
+//    public String getAllCustomers(ModelMap modelMap){
+//        modelMap.addAttribute("customers", customerService.getAllCustomers());
+//        return "restricted/customers";
+//    }
+//
+//    @GetMapping("/customer")
+//    public String getCustomer(ModelMap modelMap, Integer id){
+//        modelMap.addAttribute("customer", customerService.getCustomerByID(65));
+//        return "restricted/customer";
+//    }
 
     @GetMapping("/customer")
-    public String getCustomer(ModelMap modelMap, Integer id){
-        modelMap.addAttribute("customer", customerService.getCustomerByID(65));
-        return "restricted/customer";
-    }
-
-    @GetMapping("/hello")
-    public String currentUser(ModelMap modelMap, HttpTrace.Principal principal) {
-        String email = principal.getName(); // gets email since its the username
+    public String currentUser(ModelMap modelMap, HttpServletRequest request) {
+        String email = request.getRemoteUser();
         Customer customer = customerService.getCustomerByEmail(email);
         modelMap.addAttribute("customer", customer);
-        return "hello";
+        return "/customer";
     }
 
 }
