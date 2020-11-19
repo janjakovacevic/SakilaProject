@@ -1,3 +1,7 @@
+:root {
+    --primary: #3b89e8;
+}
+
 body {
     font-family: "Poppins", Arial, sans-serif; !important;
     background: #fff;
@@ -1575,11 +1579,8 @@ textarea.form-control {
 .title-box span { text-shadow: 0 10px 10px rgba(0, 0, 0, .15); font-weight: 800; color: #640178; }
 .title-box p {font-size: 17px; line-height: 2em; }
 
-
-@CHARSET "UTF-8";
-
 .header{
-    background-color: darkred;
+    background-color: var(--primary);
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -1622,7 +1623,7 @@ input[type=text], input[type=password], .selection-menu {
 }
 
 .button{
-    background-color: darkred;
+    background-color: var(--primary);
     color: white;
     margin: 8px 0px;
     padding: 14px 20px;
@@ -1655,7 +1656,7 @@ th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: darkred;
+    background-color: var(--primary);
     color: white;
 }
 
@@ -1670,7 +1671,7 @@ th {
 }
 
 .hyperlink-text:hover{
-    color: darkred;
+    color: var(--primary);
 }
 
 .hyperlink-text-nav{
@@ -1683,7 +1684,7 @@ th {
 }
 
 .hyperlink-text-nav:hover{
-    color: darkred;
+    color: var(--primary);
 }
 
 .hyperlink-text-home{
@@ -1728,5 +1729,5 @@ li a:hover:not(.active) {
 }
 
 .active {
-    background-color: darkred;
+    background-color: var(--primary);
 }
