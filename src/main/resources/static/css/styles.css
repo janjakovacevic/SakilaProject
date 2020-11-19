@@ -30,6 +30,31 @@ label{
   color: darkred;
 }
 
+.hyperlink-text-nav{
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  display: inline-block;
+  align-content: end;
+  text-align: left;
+}
+
+.hyperlink-text-nav:hover{
+  color: darkred;
+}
+
+.hyperlink-text-home{
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  display: inline-block;
+  align-content: end;
+  text-align: left;
+}
+
+.hyperlink-text-home:hover{
+  color: #000;
+}
 
 input[type=text], input[type=password], .selection-menu {
   width: 100%;
