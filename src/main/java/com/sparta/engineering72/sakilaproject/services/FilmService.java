@@ -1,22 +1,23 @@
 package com.sparta.engineering72.sakilaproject.services;
 
-import com.sparta.engineering72.sakilaproject.entities.Actor;
 import com.sparta.engineering72.sakilaproject.entities.Film;
-import com.sparta.engineering72.sakilaproject.respositories.CustomerRepository;
 import com.sparta.engineering72.sakilaproject.respositories.FilmRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FilmService {
 
     private final FilmRepository filmRepository;
+    private final InventoryService inventoryService;
+    private final FilmCategoryService filmCategoryService;
 
-    public FilmService(FilmRepository filmRepository){
+    public FilmService(FilmRepository filmRepository, InventoryService inventoryService, FilmCategoryService filmCategoryService){
         this.filmRepository = filmRepository;
+        this.inventoryService = inventoryService;
+        this.filmCategoryService = filmCategoryService;
     }
 
     public List<Film> getAllFilms(){
@@ -30,4 +31,18 @@ public class FilmService {
     public List<Film> getFilmsByTitle(String title){
         return filmRepository.findByTitle(title);
     }
+
+    public List<Film> getAvailableFilms(){
+        return filmRepository.getAvailableFilms();
+    }
+
+
+    public List<Film> getFilmsByCategory(Integer id){
+        return filmRepository.getAllFilmsByCategory(id);
+    }
+
+    public List<Film> getFilmsByActor(Integer id){
+        return filmRepository.getAllFilmsByActor(id);
+    }
+
 }

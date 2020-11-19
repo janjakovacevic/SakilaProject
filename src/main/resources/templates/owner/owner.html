@@ -11,31 +11,28 @@
 
 <div layout:fragment="content">
 
-    <div class="row">
-        <div class="col-md-6">
-            <h1>Account page</h1>
+    <h1>Account page</h1>
 
-            <p>Welcome to your account</p>
+    <p>Welcome to your account</p>
 
-            <table>
-                <tr>
-                    <th>First Name:</th>
-                    <td th:text="${staff.firstName}">First Name</td>
-                </tr>
-                <tr>
-                    <th>Last Name:</th>
-                    <td th:text="${staff.lastName}">Last Name</td>
-                </tr>
-                <tr>
-                    <th>Email:</th>
-                    <td th:text="${staff.email}">Email</td>
-                </tr>
+    <table>
+        <tr>
+            <th>First Name:</th>
+            <td th:text="${staff.firstName}">First Name</td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td th:text="${staff.lastName}">Last Name</td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td th:text="${staff.email}">Email</td>
+        </tr>
+    </table>
 
-            </table>
-
-
-        </div>
-    </div>
+    <form th:action="@{/logout}" method="post">
+        <input class="button" type="submit" value="Sign Out"/>
+    </form>
 
 </div>
 

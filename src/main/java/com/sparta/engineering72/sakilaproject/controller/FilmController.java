@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -31,6 +30,7 @@ public class FilmController {
             films = filmService.getFilmsByTitle(filter);
         }
         modelMap.addAttribute("films", films);
+        modelMap.addAttribute("availableFilms", filmService.getAvailableFilms());
         modelMap.addAttribute("allFilms", filmService.getAllFilms());
         return "/films/films";
     }
@@ -38,7 +38,10 @@ public class FilmController {
     @GetMapping("/films/details")
     public String getFilmDetails(ModelMap modelMap,
                                  @RequestParam(value = "id") Integer id) {
-        modelMap.addAttribute("details", filmService.getFilmByID(id));
+        Film film = filmService.getFilmByID(id);
+        boolean available = filmService.getAvailableFilms().contains(film);
+        modelMap.addAttribute("available", available);
+        modelMap.addAttribute("details", film);
         return "films/filmDetails";
     }
 

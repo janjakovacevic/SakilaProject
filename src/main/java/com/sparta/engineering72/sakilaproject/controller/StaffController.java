@@ -1,6 +1,5 @@
 package com.sparta.engineering72.sakilaproject.controller;
 
-import com.sparta.engineering72.sakilaproject.entities.Customer;
 import com.sparta.engineering72.sakilaproject.entities.Staff;
 import com.sparta.engineering72.sakilaproject.services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;

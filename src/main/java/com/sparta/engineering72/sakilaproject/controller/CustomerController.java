@@ -3,14 +3,11 @@ package com.sparta.engineering72.sakilaproject.controller;
 import com.sparta.engineering72.sakilaproject.entities.Customer;
 import com.sparta.engineering72.sakilaproject.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class CustomerController {
@@ -27,7 +24,7 @@ public class CustomerController {
         String email = request.getRemoteUser();
         Customer customer = customerService.getCustomerByEmail(email);
         modelMap.addAttribute("customer", customer);
-        return "/customer";
+        return "customer/customer";
     }
 
 }
