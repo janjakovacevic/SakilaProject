@@ -32,12 +32,12 @@ public class Store implements Serializable {
 	private List<Staff> staffs;
 
 	//bi-directional many-to-one association to Address
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="address_id", nullable=false)
 	private Address address;
 
 	//bi-directional many-to-one association to Staff
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="manager_staff_id", nullable=false)
 	private Staff staff;
 

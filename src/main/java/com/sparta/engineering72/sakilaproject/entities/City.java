@@ -28,7 +28,7 @@ public class City implements Serializable {
 	private List<Address> addresses;
 
 	//bi-directional many-to-one association to Country
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="country_id", nullable=false)
 	private Country country;
 

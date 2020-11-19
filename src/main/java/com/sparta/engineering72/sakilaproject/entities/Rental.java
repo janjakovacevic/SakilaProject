@@ -33,17 +33,17 @@ public class Rental implements Serializable {
 	private List<Payment> payments;
 
 	//bi-directional many-to-one association to Customer
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="customer_id", nullable=false)
 	private Customer customer;
 
 	//bi-directional many-to-one association to Inventory
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="inventory_id", nullable=false)
 	private Inventory inventory;
 
 	//bi-directional many-to-one association to Staff
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="staff_id", nullable=false)
 	private Staff staff;
 

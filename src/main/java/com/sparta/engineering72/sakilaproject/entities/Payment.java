@@ -29,17 +29,17 @@ public class Payment implements Serializable {
 	private Date paymentDate;
 
 	//bi-directional many-to-one association to Customer
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="customer_id", nullable=false)
 	private Customer customer;
 
 	//bi-directional many-to-one association to Rental
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="rental_id")
 	private Rental rental;
 
 	//bi-directional many-to-one association to Staff
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="staff_id", nullable=false)
 	private Staff staff;
 

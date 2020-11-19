@@ -36,7 +36,7 @@ public class Address implements Serializable {
 	private String postalCode;
 
 	//bi-directional many-to-one association to City
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="city_id", nullable=false)
 	private City city;
 
@@ -129,14 +129,14 @@ public class Address implements Serializable {
 
 	public Customer addCustomer(Customer customer) {
 		getCustomers().add(customer);
-		customer.setAddress(this);
+//		customer.setAddress(this);
 
 		return customer;
 	}
 
 	public Customer removeCustomer(Customer customer) {
 		getCustomers().remove(customer);
-		customer.setAddress(null);
+//		customer.setAddress(null);
 
 		return customer;
 	}
