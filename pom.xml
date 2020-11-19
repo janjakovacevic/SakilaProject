@@ -86,6 +86,11 @@
             <artifactId>bootstrap</artifactId>
             <version>4.5.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>4.6.3</version>
+        </dependency>
              
     <!--thymeleaf layout-->
         <dependency>
