@@ -11,17 +11,17 @@
 
 <div layout:fragment="content">
 
-    <h1 style="text-align: center">BROWSE OUR FILMS</h1>
+    <h1 style="text-align: center">BROWSE OUR CATEGORIES</h1>
 
     <form class="filter" action="/films">
         <table>
             <tr>
                 <td class="no-border">
                     <label>
-                        Film Title:
-                        <select name="title" class="selection-menu">
-                            <option>ALL FILMS</option>
-                            <option th:each="film: ${allFilms}" th:text="${film.title}">
+                        Category Name:
+                        <select name="genre" class="selection-menu">
+                            <option>ALL GENRE</option>
+                            <option th:each="category: ${allCategories}" th:text="${category.name}">
                         </select>
                     </label>
                 </td>
@@ -33,12 +33,12 @@
     </form>
     <table>
         <tr>
-            <th>Film Title</th>
-            <th>Film Description</th>
+            <th>Category Id</th>
+            <th>Category Name</th>
         </tr>
-        <tr th:each="film: ${films}">
-            <td><a class="hyperlink-text" th:href="@{films/details(id=${film.filmId})}" th:text="${film.title}">Film</a></td>
-            <td th:text="${film.description}" th:action="${film.filmId}">Film Info</td>
+        <tr th:each="category: ${categories}">
+            <td><a class="hyperlink-text" th:href="@{categories/details(id=${category.categoryId})}" th:text="${category.categoryId}"></a></td>
+            <td th:text="${category.name}"></td>
         </tr>
     </table>
 

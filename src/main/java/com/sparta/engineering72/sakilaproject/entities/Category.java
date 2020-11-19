@@ -14,7 +14,7 @@ public class Category implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="category_id", unique=true, nullable=false)
-	private byte categoryId;
+	private int categoryId;
 
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
@@ -29,11 +29,11 @@ public class Category implements Serializable {
 	public Category() {
 	}
 
-	public byte getCategoryId() {
+	public int getCategoryId() {
 		return this.categoryId;
 	}
 
-	public void setCategoryId(byte categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 

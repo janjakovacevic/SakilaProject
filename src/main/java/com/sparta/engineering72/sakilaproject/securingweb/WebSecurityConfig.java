@@ -21,8 +21,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 @Configuration
@@ -41,7 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/webjars/**",
                             "/css/**",
                             "/films/**",
-                            "/actors/**"
+                            "/actors/**",
+                            "/categories/**"
                             ).permitAll() //Do not require authentication
                 .anyRequest().authenticated()
                 .and()

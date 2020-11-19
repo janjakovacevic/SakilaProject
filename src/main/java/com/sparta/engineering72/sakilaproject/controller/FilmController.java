@@ -24,23 +24,21 @@ public class FilmController {
     @GetMapping("/films")
     public String getFilms(ModelMap modelMap, @RequestParam(value = "title", defaultValue = "ALL FILMS") String filter) {
         List<Film> films;
-        List<Film> allFilms;
         if (filter.equals("ALL FILMS")){
             films = filmService.getAllFilms();
         }
         else {
             films = filmService.getFilmsByTitle(filter);
         }
-        allFilms = filmService.getAllFilms();
-        modelMap.addAttribute("allFilms", allFilms);
-        modelMap.addAttribute("films",films);
+        modelMap.addAttribute("films", films);
+        modelMap.addAttribute("allFilms", filmService.getAllFilms());
         return "/films/films";
     }
 
-    @GetMapping("/films/{id}")
-    public String getFilmDetails(@PathVariable int id, ModelMap modelMap) {
-        Film film = filmService.getFilmByID(id);
-        modelMap.addAttribute("details", film);
+    @GetMapping("/films/details")
+    public String getFilmDetails(ModelMap modelMap,
+                                 @RequestParam(value = "id") Integer id) {
+        modelMap.addAttribute("details", filmService.getFilmByID(id));
         return "films/filmDetails";
     }
 

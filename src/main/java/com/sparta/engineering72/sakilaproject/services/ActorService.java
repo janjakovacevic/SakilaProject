@@ -2,12 +2,9 @@ package com.sparta.engineering72.sakilaproject.services;
 
 import com.sparta.engineering72.sakilaproject.entities.Actor;
 import com.sparta.engineering72.sakilaproject.respositories.ActorRepository;
-import com.sparta.engineering72.sakilaproject.respositories.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ActorService {
@@ -23,7 +20,7 @@ public class ActorService {
     }
 
     public Actor getActorByID(int id){
-        return actorRepository.getActorsByActorId(id);
+        return actorRepository.getActorByActorId(id);
     }
 
     public List<Actor> getActorsByFullName(String firstName, String lastName){
@@ -36,6 +33,11 @@ public class ActorService {
 
     public List<Actor> getActorsByLastName(String lastName){
         return actorRepository.findActorsByLastName(lastName);
+    }
+
+    public String getActorFullNameFromID(Integer id){
+        Actor actor = getActorByID(id);
+        return actor.getFirstName() + " " + actor.getLastName();
     }
 
 }

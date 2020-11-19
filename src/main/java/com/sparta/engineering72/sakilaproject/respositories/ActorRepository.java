@@ -10,6 +10,6 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
     List<Actor> findActorsByFirstNameAndLastName(String firstName, String lastName);
     List<Actor> findActorsByFirstName(String firstName);
     List<Actor> findActorsByLastName(String lastName);
-    Actor getActorsByActorId(Integer id);
+    Actor getActorByActorId(Integer id);
 
 }
