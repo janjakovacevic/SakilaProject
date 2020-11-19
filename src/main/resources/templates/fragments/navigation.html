@@ -19,15 +19,15 @@
 			<span sec:authorize="isAuthenticated()">
 				<span sec:authentication="name"></span>
 				<span sec:authentication="principal.authorities"></span>
-                    <a th:href="@{/customer}">Customer Page</a>
-                </span>
+                    <a th:href="@{/owner}">Owner Page</a>
+			</span>
 			</li>
 			<li style="float:right">
 			<span sec:authorize="isAuthenticated()">
 				<span sec:authentication="name"></span>
 				<span sec:authentication="principal.authorities"></span>
-                    <a th:href="@{/owner}">Owner Page</a>
-			</span>
+                    <a th:href="@{/customer}">Customer Page</a>
+                </span>
 			</li>
 			<li style="float:right"><a href="/login">Login</a></li>
 		</ul>
