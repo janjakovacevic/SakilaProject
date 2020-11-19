@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      layout:decorator="layout/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1 th:text="${staff != null} ? ${'Welcome back, ' + (staff.firstName.concat(' ' + staff.lastName).toUpperCase())} : 'Welcome back, CUSTOMER'">Welcome back, CUSTOMER </h1>
+    <table class="table">
+        <tr>
+            <th>First Name:</th>
+            <td  th:text="${staff != null} ? ${staff.firstName} : 'N/A'"></td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td th:text="${staff != null} ? ${staff.lastName} : 'N/A'"></td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td th:text="${staff != null} ? ${staff.email} : 'N/A'"></td>
+        </tr>
+        <tr>
+            <th>Staff ID:</th>
+            <td th:text="${staff != null} ? ${staff.staffId} : 'N/A'"></td>
+        </tr>
+    </table>
+
+    <form th:action="@{/logout}" method="post">
+        <input class="button" type="submit" value="Sign Out"/>
+    </form>
+
+</div>
+
+
+</body>
+</html>

@@ -1,65 +1,61 @@
 package com.sparta.engineering72.sakilaproject.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-
+import java.util.Objects;
 
 @Entity
-@Table(name="film_actor")
-@NamedQuery(name="FilmActor.findAll", query="SELECT f FROM FilmActor f")
-public class FilmActor implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "film_actor", schema = "sakila", catalog = "")
+@IdClass(FilmActorPK.class)
+public class FilmActor {
+    private int actorId;
+    private int filmId;
+    private Timestamp lastUpdate;
 
-	@EmbeddedId
-	private FilmActorPK id;
 
-	@Column(name="last_update", nullable=false)
-	private Timestamp lastUpdate;
+    @Id
+    @Column(name = "actor_id")
+    public int getActorId() {
+        return actorId;
+    }
 
-	//bi-directional many-to-one association to Actor
-	@ManyToOne
-	@JoinColumn(name="actor_id", nullable=false, insertable=false, updatable=false)
-	private Actor actor;
+    public void setActorId(int actorId) {
+        this.actorId = actorId;
+    }
 
-	//bi-directional many-to-one association to Film
-	@ManyToOne
-	@JoinColumn(name="film_id", nullable=false, insertable=false, updatable=false)
-	private Film film;
+    @Id
+    @Column(name = "film_id")
+    public int getFilmId() {
+        return filmId;
+    }
 
-	public FilmActor() {
-	}
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
+    }
 
-	public FilmActorPK getId() {
-		return this.id;
-	}
+    @Basic
+    @Column(name = "last_update")
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
 
-	public void setId(FilmActorPK id) {
-		this.id = id;
-	}
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
-	public Timestamp getLastUpdate() {
-		return this.lastUpdate;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FilmActor filmActor = (FilmActor) o;
+        return actorId == filmActor.actorId &&
+                filmId == filmActor.filmId &&
+                Objects.equals(lastUpdate, filmActor.lastUpdate);
+    }
 
-	public void setLastUpdate(Timestamp lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
-
-	public Actor getActor() {
-		return this.actor;
-	}
-
-	public void setActor(Actor actor) {
-		this.actor = actor;
-	}
-
-	public Film getFilm() {
-		return this.film;
-	}
-
-	public void setFilm(Film film) {
-		this.film = film;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(actorId, filmId, lastUpdate);
+    }
 
 }

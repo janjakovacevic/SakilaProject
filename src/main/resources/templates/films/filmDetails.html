@@ -23,12 +23,28 @@
             <td th:text="${details.releaseYear}">Film Info</td>
         </tr>
         <tr >
-            <td style="font-weight: bold ">Rental Duration</td>
-            <td th:text="${details.rentalDuration}">Film Info</td>
+            <td style="font-weight: bold ">Film Length</td>
+            <td th:text="${details.length} + ' ' + minutes">Film Info</td>
         </tr>
         <tr >
+            <td style="font-weight: bold ">Film Rating</td>
+            <td th:text="${details.rating}">Film Info</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold ">Special Features</td>
+            <td th:text="${details.specialFeatures}">Film Info</td>
+        </tr>
+        <tr >
+            <td style="font-weight: bold ">Rental Duration</td>
+            <td th:text="${details.rentalDuration} + ' ' + days">Film Info</td>
+        </tr>
+        <tr>
             <td style="font-weight: bold ">Rental Cost</td>
             <td th:text="${details.rentalRate}">Film Info</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold ">Status</td>
+            <td th:text="${available} ? 'Available' : 'Not Available'">Film Info</td>
         </tr>
     </table>
 

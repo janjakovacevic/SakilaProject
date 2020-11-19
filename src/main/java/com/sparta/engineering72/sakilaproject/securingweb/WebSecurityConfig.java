@@ -30,10 +30,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private StaffService staffService;
 
+    @Autowired
+    private SimpleAuthenticationSuccessHandler successHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception { //Defines which URL paths should be secured and which should not
         http
                 .authorizeRequests()
+                .antMatchers("/customer").hasRole("USER")
+                .antMatchers("/owner").hasRole("ADMIN")
                 .antMatchers(
                 "/",
                             "/home",
@@ -45,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             ).permitAll() //Do not require authentication
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
+                .formLogin().successHandler(successHandler)
                 .loginPage("/login").permitAll() //Custom login page; Everyone is allowed to view
                 .and()
                 .logout()

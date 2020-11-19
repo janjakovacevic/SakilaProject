@@ -45,7 +45,7 @@
                     <th>Last Name</th>
                 </tr>
                 <tr th:each="actor: ${actors}">
-                    <td><a class="hyperlink-text" th:href="@{actors/details(id=${actor.actorId})}" th:text="${actor.actorId}">Film</a></td>
+                    <td><a class="hyperlink-text" th:href="@{actors/details(id=${actor.actorId})}" th:text="${actor.actorId}">Actor</a></td>
                     <td th:text="${actor.firstName}"></td>
                     <td th:text="${actor.lastName}"></td>
                 </tr>

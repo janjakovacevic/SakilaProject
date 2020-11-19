@@ -1,248 +1,156 @@
 package com.sparta.engineering72.sakilaproject.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.sql.Timestamp;
-import java.util.List;
-
-
+import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
-@Table(name="film")
-@NamedQuery(name="Film.findAll", query="SELECT f FROM Film f")
-public class Film implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Film {
+    private int filmId;
+    private String title;
+    private String description;
+    private LocalDate releaseYear;
+    private Integer rentalDuration;
+    private BigDecimal rentalRate;
+    private Integer length;
+    private BigDecimal replacementCost;
+    private String rating;
+    private String specialFeatures;
+    private Timestamp lastUpdate;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="film_id", unique=true, nullable=false)
-	private int filmId;
+    @Id
+    @Column(name = "film_id")
+    public int getFilmId() {
+        return filmId;
+    }
 
-	@Lob
-	private String description;
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
+    }
 
-	@Column(name="last_update", nullable=false)
-	private Timestamp lastUpdate;
+    @Basic
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
 
-	private int length;
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	@Column(length=1)
-	private String rating;
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="release_year")
-	private Date releaseYear;
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	@Column(name="rental_duration", nullable=false)
-	private byte rentalDuration;
+    @Basic
+    @Column(name = "release_year")
+    public LocalDate getReleaseYear() {
+        return releaseYear;
+    }
 
-	@Column(name="rental_rate", nullable=false, precision=10, scale=2)
-	private BigDecimal rentalRate;
+    public void setReleaseYear(LocalDate releaseYear) {
+        this.releaseYear = releaseYear;
+    }
 
-	@Column(name="replacement_cost", nullable=false, precision=10, scale=2)
-	private BigDecimal replacementCost;
+    @Basic
+    @Column(name = "rental_duration")
+    public Integer getRentalDuration() {
+        return rentalDuration;
+    }
 
-	@Column(name="special_features")
-	private String specialFeatures;
+    public void setRentalDuration(Integer rentalDuration) {
+        this.rentalDuration = rentalDuration;
+    }
 
-	@Column(nullable=false, length=255)
-	private String title;
+    @Basic
+    @Column(name = "rental_rate")
+    public BigDecimal getRentalRate() {
+        return rentalRate;
+    }
 
-	//bi-directional many-to-one association to Language
-	@ManyToOne
-	@JoinColumn(name="language_id", nullable=false)
-	private Language language1;
+    public void setRentalRate(BigDecimal rentalRate) {
+        this.rentalRate = rentalRate;
+    }
 
-	//bi-directional many-to-one association to Language
-	@ManyToOne
-	@JoinColumn(name="original_language_id")
-	private Language language2;
+    @Basic
+    @Column(name = "length")
+    public Integer getLength() {
+        return length;
+    }
 
-	//bi-directional many-to-one association to FilmActor
-	@OneToMany(mappedBy="film")
-	private List<FilmActor> filmActors;
+    public void setLength(Integer length) {
+        this.length = length;
+    }
 
-	//bi-directional many-to-one association to FilmCategory
-	@OneToMany(mappedBy="film")
-	private List<FilmCategory> filmCategories;
+    @Basic
+    @Column(name = "replacement_cost")
+    public BigDecimal getReplacementCost() {
+        return replacementCost;
+    }
 
-	//bi-directional many-to-one association to Inventory
-	@OneToMany(mappedBy="film")
-	private List<Inventory> inventories;
+    public void setReplacementCost(BigDecimal replacementCost) {
+        this.replacementCost = replacementCost;
+    }
 
-	public Film() {
-	}
+    @Basic
+    @Column(name = "rating")
+    public String getRating() {
+        return rating;
+    }
 
-	public int getFilmId() {
-		return this.filmId;
-	}
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
 
-	public void setFilmId(int filmId) {
-		this.filmId = filmId;
-	}
+    @Basic
+    @Column(name = "special_features")
+    public String getSpecialFeatures() {
+        return specialFeatures;
+    }
 
-	public String getDescription() {
-		return this.description;
-	}
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @Basic
+    @Column(name = "last_update")
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
 
-	public Timestamp getLastUpdate() {
-		return this.lastUpdate;
-	}
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
-	public void setLastUpdate(Timestamp lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Film film = (Film) o;
+        return filmId == film.filmId &&
+                Objects.equals(title, film.title) &&
+                Objects.equals(description, film.description) &&
+                Objects.equals(releaseYear, film.releaseYear) &&
+                Objects.equals(rentalDuration, film.rentalDuration) &&
+                Objects.equals(rentalRate, film.rentalRate) &&
+                Objects.equals(length, film.length) &&
+                Objects.equals(replacementCost, film.replacementCost) &&
+                Objects.equals(rating, film.rating) &&
+                Objects.equals(specialFeatures, film.specialFeatures) &&
+                Objects.equals(lastUpdate, film.lastUpdate);
+    }
 
-	public int getLength() {
-		return this.length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public String getRating() {
-		return this.rating;
-	}
-
-	public void setRating(String rating) {
-		this.rating = rating;
-	}
-
-	public Date getReleaseYear() {
-		return this.releaseYear;
-	}
-
-	public void setReleaseYear(Date releaseYear) {
-		this.releaseYear = releaseYear;
-	}
-
-	public byte getRentalDuration() {
-		return this.rentalDuration;
-	}
-
-	public void setRentalDuration(byte rentalDuration) {
-		this.rentalDuration = rentalDuration;
-	}
-
-	public BigDecimal getRentalRate() {
-		return this.rentalRate;
-	}
-
-	public void setRentalRate(BigDecimal rentalRate) {
-		this.rentalRate = rentalRate;
-	}
-
-	public BigDecimal getReplacementCost() {
-		return this.replacementCost;
-	}
-
-	public void setReplacementCost(BigDecimal replacementCost) {
-		this.replacementCost = replacementCost;
-	}
-
-	public String getSpecialFeatures() {
-		return this.specialFeatures;
-	}
-
-	public void setSpecialFeatures(String specialFeatures) {
-		this.specialFeatures = specialFeatures;
-	}
-
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Language getLanguage1() {
-		return this.language1;
-	}
-
-	public void setLanguage1(Language language1) {
-		this.language1 = language1;
-	}
-
-	public Language getLanguage2() {
-		return this.language2;
-	}
-
-	public void setLanguage2(Language language2) {
-		this.language2 = language2;
-	}
-
-	public List<FilmActor> getFilmActors() {
-		return this.filmActors;
-	}
-
-	public void setFilmActors(List<FilmActor> filmActors) {
-		this.filmActors = filmActors;
-	}
-
-	public FilmActor addFilmActor(FilmActor filmActor) {
-		getFilmActors().add(filmActor);
-		filmActor.setFilm(this);
-
-		return filmActor;
-	}
-
-	public FilmActor removeFilmActor(FilmActor filmActor) {
-		getFilmActors().remove(filmActor);
-		filmActor.setFilm(null);
-
-		return filmActor;
-	}
-
-	public List<FilmCategory> getFilmCategories() {
-		return this.filmCategories;
-	}
-
-	public void setFilmCategories(List<FilmCategory> filmCategories) {
-		this.filmCategories = filmCategories;
-	}
-
-	public FilmCategory addFilmCategory(FilmCategory filmCategory) {
-		getFilmCategories().add(filmCategory);
-		filmCategory.setFilm(this);
-
-		return filmCategory;
-	}
-
-	public FilmCategory removeFilmCategory(FilmCategory filmCategory) {
-		getFilmCategories().remove(filmCategory);
-		filmCategory.setFilm(null);
-
-		return filmCategory;
-	}
-
-	public List<Inventory> getInventories() {
-		return this.inventories;
-	}
-
-	public void setInventories(List<Inventory> inventories) {
-		this.inventories = inventories;
-	}
-
-	public Inventory addInventory(Inventory inventory) {
-		getInventories().add(inventory);
-		inventory.setFilm(this);
-
-		return inventory;
-	}
-
-	public Inventory removeInventory(Inventory inventory) {
-		getInventories().remove(inventory);
-		inventory.setFilm(null);
-
-		return inventory;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(filmId, title, description, releaseYear, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, lastUpdate);
+    }
 
 }

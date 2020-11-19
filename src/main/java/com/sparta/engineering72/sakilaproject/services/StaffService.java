@@ -1,6 +1,5 @@
 package com.sparta.engineering72.sakilaproject.services;
 
-import com.sparta.engineering72.sakilaproject.entities.Customer;
 import com.sparta.engineering72.sakilaproject.entities.Staff;
 import com.sparta.engineering72.sakilaproject.respositories.StaffRepository;
 import org.springframework.stereotype.Service;
@@ -17,5 +16,9 @@ public class StaffService {
 
     public List<Staff> getAllStaff(){
         return staffRepository.findAll();
+    }
+
+    public Staff getStaffByUsername(String username){
+        return staffRepository.getStaffByUsername(username);
     }
 }
