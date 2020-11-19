@@ -22,18 +22,6 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-//    @GetMapping("/customers")
-//    public String getAllCustomers(ModelMap modelMap){
-//        modelMap.addAttribute("customers", customerService.getAllCustomers());
-//        return "restricted/customers";
-//    }
-//
-//    @GetMapping("/customer")
-//    public String getCustomer(ModelMap modelMap, Integer id){
-//        modelMap.addAttribute("customer", customerService.getCustomerByID(65));
-//        return "restricted/customer";
-//    }
-
     @GetMapping("/customer")
     public String currentUser(ModelMap modelMap, HttpServletRequest request) {
         String email = request.getRemoteUser();
