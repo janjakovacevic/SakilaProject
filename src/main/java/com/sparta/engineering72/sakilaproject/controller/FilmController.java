@@ -4,9 +4,10 @@ import com.sparta.engineering72.sakilaproject.entities.Film;
 import com.sparta.engineering72.sakilaproject.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -43,6 +44,44 @@ public class FilmController {
         modelMap.addAttribute("available", available);
         modelMap.addAttribute("details", film);
         return "films/filmDetails";
+    }
+
+    @GetMapping("/owner/manage-films")
+    public String getFilmDetails(ModelMap modelMap) {
+        List<Film> films = filmService.getAllFilms();
+        modelMap.addAttribute("films", films);
+        return "/owner/manage-films";
+    }
+
+    @RequestMapping("/new")
+    public String showNewProductPage(Model model) {
+        Film film = new Film();
+        model.addAttribute("film", film);
+//        film.
+
+        return "/owner/create-new-film";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("film") Film film) {
+        filmService.save(film);
+
+        return "redirect:/films";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("/owner/edit-film");
+        Film film = filmService.getFilmByID(id);
+        mav.addObject("film", film);
+
+        return mav;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable(name = "id") int id) {
+        filmService.deleteFilmById(id);
+        return "redirect:/owner/manage-films";
     }
 
 }

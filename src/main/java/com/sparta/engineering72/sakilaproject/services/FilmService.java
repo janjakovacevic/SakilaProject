@@ -21,7 +21,7 @@ public class FilmService {
     }
 
     public List<Film> getAllFilms(){
-        return (List<Film>)filmRepository.findAll();
+        return filmRepository.findAll();
     }
 
     public Film getFilmByID(int id){
@@ -36,13 +36,20 @@ public class FilmService {
         return filmRepository.getAvailableFilms();
     }
 
-
     public List<Film> getFilmsByCategory(Integer id){
         return filmRepository.getAllFilmsByCategory(id);
     }
 
     public List<Film> getFilmsByActor(Integer id){
         return filmRepository.getAllFilmsByActor(id);
+    }
+
+    public void save(Film film) {
+        filmRepository.save(film);
+    }
+
+    public void deleteFilmById(int id) {
+        filmRepository.deleteById(id);
     }
 
 }
