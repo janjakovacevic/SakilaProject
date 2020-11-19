@@ -12,7 +12,7 @@ public class FilmCategoryPK implements Serializable {
 	private int filmId;
 
 	@Column(name="category_id", insertable=false, updatable=false, unique=true, nullable=false)
-	private byte categoryId;
+	private int categoryId;
 
 	public FilmCategoryPK() {
 	}
@@ -22,10 +22,10 @@ public class FilmCategoryPK implements Serializable {
 	public void setFilmId(int filmId) {
 		this.filmId = filmId;
 	}
-	public byte getCategoryId() {
+	public int getCategoryId() {
 		return this.categoryId;
 	}
-	public void setCategoryId(byte categoryId) {
+	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -46,7 +46,7 @@ public class FilmCategoryPK implements Serializable {
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.filmId;
-		hash = hash * prime + ((int) this.categoryId);
+		hash = hash * prime + this.categoryId;
 		
 		return hash;
 	}

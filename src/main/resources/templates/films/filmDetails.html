@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout/layout">
+
+<head>
+    <title>Layout</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+
+    <h1 style="text-align: center" th:action="${details}" th:text="${details.title}"></h1>
+    <table class="center-block">
+        <tr >
+            <td style="font-weight: bold ">Description</td>
+            <td th:text="${details.description}">Film Info</td>
+        </tr>
+        <tr >
+            <td style="font-weight: bold ">Release Year</td>
+            <td th:text="${details.releaseYear}">Film Info</td>
+        </tr>
+        <tr >
+            <td style="font-weight: bold ">Rental Duration</td>
+            <td th:text="${details.rentalDuration}">Film Info</td>
+        </tr>
+        <tr >
+            <td style="font-weight: bold ">Rental Cost</td>
+            <td th:text="${details.rentalRate}">Film Info</td>
+        </tr>
+    </table>
+
+
+</div>
+
+</body>
+</html>

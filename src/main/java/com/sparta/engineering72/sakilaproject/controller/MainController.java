@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class MainController {
 
-    @RequestMapping(value="/")
+    @RequestMapping(value="/home")
     public String home() {
         return "home";
     }

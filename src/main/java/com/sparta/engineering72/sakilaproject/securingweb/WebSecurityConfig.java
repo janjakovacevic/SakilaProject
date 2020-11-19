@@ -34,7 +34,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception { //Defines which URL paths should be secured and which should not
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/webjars/**", "/css/**").permitAll() //Do not require authentication
+                .antMatchers(
+                "/",
+                            "/home",
+                            "/webjars/**",
+                            "/css/**",
+                            "/films/**",
+                            "/actors/**",
+                            "/categories/**"
+                            ).permitAll() //Do not require authentication
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
