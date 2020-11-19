@@ -3,10 +3,12 @@ package com.sparta.engineering72.sakilaproject.controller;
 import com.sparta.engineering72.sakilaproject.entities.Customer;
 import com.sparta.engineering72.sakilaproject.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -29,6 +31,14 @@ public class CustomerController {
     public String getCustomer(ModelMap modelMap, Integer id){
         modelMap.addAttribute("customer", customerService.getCustomerByID(65));
         return "restricted/customer";
+    }
+
+    @GetMapping("/hello")
+    public String currentUser(ModelMap modelMap, HttpTrace.Principal principal) {
+        String email = principal.getName(); // gets email since its the username
+        Customer customer = customerService.getCustomerByEmail(email);
+        modelMap.addAttribute("customer", customer);
+        return "hello";
     }
 
 }

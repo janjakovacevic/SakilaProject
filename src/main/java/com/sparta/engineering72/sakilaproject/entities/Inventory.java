@@ -21,12 +21,12 @@ public class Inventory implements Serializable {
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to Film
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="film_id", nullable=false)
 	private Film film;
 
 	//bi-directional many-to-one association to Store
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="store_id", nullable=false)
 	private Store store;
 

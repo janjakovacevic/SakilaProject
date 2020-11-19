@@ -18,12 +18,12 @@ public class FilmActor implements Serializable {
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to Actor
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="actor_id", nullable=false, insertable=false, updatable=false)
 	private Actor actor;
 
 	//bi-directional many-to-one association to Film
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="film_id", nullable=false, insertable=false, updatable=false)
 	private Film film;
 

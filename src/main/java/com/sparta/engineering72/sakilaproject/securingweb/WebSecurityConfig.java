@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -54,8 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    public UserDetailsService userDetailsService() { //In-memory user store
-        return new InMemoryUserDetailsManager(getUserDetailsList());
+    public UserDetailsService userDetailsService() {
+        return new CustomerDetailsServiceImpl();
     }
 
     private List<UserDetails> getUserDetailsList() {
@@ -90,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -103,17 +104,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        List<Customer> customers = customerService.getAllCustomers();
-        List<Staff> staff = staffService.getAllStaff();
-
-        for (Customer customer : customers) {
-            auth.inMemoryAuthentication()
-                    .withUser(customer.getEmail()).password("{noop}"+customer.getCustomerId()+"").roles("USER");
-        }
-
-        for (Staff staffMember : staff) {
-            auth.inMemoryAuthentication()
-                    .withUser(staffMember.getUsername()).password("{noop}"+staffMember.getPassword()+"").roles("ADMIN");
-        }
+        auth.authenticationProvider(authenticationProvider());
     }
 }

@@ -51,12 +51,12 @@ public class Film implements Serializable {
 	private String title;
 
 	//bi-directional many-to-one association to Language
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="language_id", nullable=false)
 	private Language language1;
 
 	//bi-directional many-to-one association to Language
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="original_language_id")
 	private Language language2;
 

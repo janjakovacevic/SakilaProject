@@ -24,4 +24,8 @@ public class CustomerService {
         return customerRepository.getCustomerByCustomerId(id);
     }
 
+    public Customer getCustomerByEmail(String email){
+
+        return customerRepository.getCustomerByEmail(email);
+    }
 }

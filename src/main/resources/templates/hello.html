@@ -6,9 +6,35 @@
     <title>Title</title>
 </head>
 <body>
-    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+
+    <div class="content">
+        <h1 th:text="${customer != null} ? ${'Welcome back, ' + (customer.firstName.concat(' ' + customer.lastName).toUpperCase())} : 'Welcome back, CUSTOMER'">Welcome back, CUSTOMER </h1>
+        <table class="table">
+            <tr>
+                <th>First Name:</th>
+                <td  th:text="${customer != null} ? ${customer.firstName} : 'N/A'"></td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td th:text="${customer != null} ? ${customer.lastName} : 'N/A'"></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td th:text="${customer != null} ? ${customer.email} : 'N/A'"></td>
+            </tr>
+            <tr>
+                <th>Registration Date:</th>
+                <td th:text="${customer != null} ? ${customer.createDate} : 'N/A'"></td>
+            </tr>
+        </table>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+    </div>
+
+<!--    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>-->
+
 </body>
 </html>
