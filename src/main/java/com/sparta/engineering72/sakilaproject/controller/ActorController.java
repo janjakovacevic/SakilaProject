@@ -54,4 +54,8 @@ public class ActorController {
         modelMap.addAttribute("films", filmActorService.getFilmsByActor(id));
         return "actors/actorDetails";
     }
+
+    public Actor findActorById(Integer id) {
+        return actorService.getActorByID(id);
+    }
 }
