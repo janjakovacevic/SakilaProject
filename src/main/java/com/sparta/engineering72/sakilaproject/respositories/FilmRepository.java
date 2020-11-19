@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface FilmRepository extends JpaRepository<Film, Integer> {
+
     @Query(value = "SELECT * FROM film f INNER JOIN inventory i ON f.film_id = i.film_id",
             nativeQuery = true)
     List<Film> getAvailableFilms();

@@ -36,7 +36,6 @@ public class FilmService {
         return filmRepository.getAvailableFilms();
     }
 
-
     public List<Film> getFilmsByCategory(Integer id){
         return filmRepository.getAllFilmsByCategory(id);
     }
@@ -44,5 +43,6 @@ public class FilmService {
     public List<Film> getFilmsByActor(Integer id){
         return filmRepository.getAllFilmsByActor(id);
     }
+
 
 }

@@ -1667,7 +1667,7 @@ th {
     margin: 8px 0;
     display: inline-block;
     align-content: end;
-    text-align: left;
+    text-align: center;
 }
 
 .hyperlink-text:hover{

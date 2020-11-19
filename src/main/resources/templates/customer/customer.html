@@ -10,7 +10,12 @@
 <body>
 
 <div layout:fragment="content">
-    <h1 th:text="${customer != null} ? ${'Welcome back, ' + (customer.firstName.concat(' ' + customer.lastName).toUpperCase())} : 'Welcome back, CUSTOMER'">Welcome back, CUSTOMER </h1>
+    <h1 th:text="${customer != null} ? ${'Hello, ' + (customer.firstName.concat(' ' + customer.lastName).toUpperCase())} : 'Hello, Customer'">Welcome back, CUSTOMER </h1>
+
+    <form th:action="@{/logout}" method="post">
+        <input class="button" type="submit" value="Sign Out"/>
+    </form>
+
     <table class="table">
         <tr>
             <th>First Name:</th>
@@ -30,9 +35,21 @@
         </tr>
     </table>
 
-    <form th:action="@{/logout}" method="post">
-        <input class="button" type="submit" value="Sign Out"/>
+    <form class="form-group" name="orders">
+        <table>
+            <tr>
+                <th>Film Title</th>
+                <th>Rental Date</th>
+                <th>Return Date</th>
+            </tr>
+            <tr th:each="order: ${orders}">
+                <td><a class="hyperlink-text" th:href="@{films/details(id=${order.film.filmId})}"  th:text="${order.film.title}">Film</a></td>
+                <td th:text="${order.rental.rentalDate}"></td>
+                <td th:text="${order.rental.returnDate}"></td>
+            </tr>
+        </table>
     </form>
+
 </div>
 
 </body>
