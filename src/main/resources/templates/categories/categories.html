@@ -10,10 +10,8 @@
 <body>
 
 <div layout:fragment="content">
-
-    <h1 style="text-align: center">BROWSE OUR CATEGORIES</h1>
-
-    <table>
+    <h1 style="text-align: center;">BROWSE OUR CATEGORIES</h1>
+    <table style="text-align-last: center;">
         <tr>
             <th style="text-align: center">Category Name</th>
         </tr>
@@ -21,8 +19,6 @@
             <td><a class="hyperlink-text" th:href="@{categories/details(id=${category.categoryId})}" th:text="${category.name}"></a></td>
         </tr>
     </table>
-
-
 </div>
 
 </body>

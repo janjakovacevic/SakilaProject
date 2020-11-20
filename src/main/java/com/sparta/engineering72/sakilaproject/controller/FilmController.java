@@ -20,6 +20,14 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -82,22 +90,6 @@ public class FilmController {
     }
 
 
-//    @GetMapping(value = "/owner/films")
-//    public String searchFilm(@RequestParam(value = "search", defaultValue = "") String id, ModelMap modelMap) {
-//        List<Film> allFilms = null;
-//        Film film = null;
-//        if (id.equals("")) {
-//            allFilms = filmService.getAllFilms();
-//        } else {
-//            film = filmService.getFilmByID(Integer.valueOf(id));
-//        }
-//        modelMap.addAttribute("filmFound", film);
-//        modelMap.addAttribute("films", allFilms);
-//        return "owner/films";
-//
-//    }
-
-
     @GetMapping("/owner/films")
     public String getFilms(ModelMap modelMap) {
         HashMap<Integer, Integer> filmCount = new HashMap<>();
@@ -110,15 +102,53 @@ public class FilmController {
         return "owner/films";
     }
 
-    @GetMapping("/owner/add-film")
-    public String addFilm(ModelMap modelMap) {
-        modelMap.addAttribute("film", new Film());
-        return "/owner/add-film";
+    @GetMapping("/owner/manage-films")
+    public String getFilmDetails(ModelMap modelMap) {
+        List<Film> films = filmService.getAllFilms();
+        modelMap.addAttribute("films", films);
+        return "/owner/manage-films";
     }
 
-    @PostMapping("/owner/add-film")
-    public String addFilm(@ModelAttribute Film film, ModelMap modelMap){
-        filmService.createFilm(film);
+    @RequestMapping("/new")
+    public String showNewProductPage(Model model) {
+        Film film = new Film();
+
+        model.addAttribute("film", film);
+
+//        filmService.getAllSpecialFeatures
+
+//        String releaseYear = "";
+//        model.addAttribute("releaseYear", releaseYear);
+//        LocalDate localDate = LocalDate.parse(releaseYear);
+//        film.setReleaseYear(localDate);
+
+        return "/owner/create-new-film";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("film") Film film, Model model) {
+        film.setLastUpdate(Timestamp.from(Instant.now()));
+        film.setReleaseYear(LocalDate.now().getYear()); //Fixme make it a choice
+        //Fixme set language_id manually
+
+        filmService.save(film);
+
         return "redirect:/films";
     }
+
+    @RequestMapping("/edit/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("/owner/edit-film");
+        Film film = filmService.getFilmByID(id);
+        mav.addObject("film", film);
+
+        return mav;
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable(name = "id") int id) {
+        filmService.deleteFilmById(id);
+        return "redirect:/owner/manage-films";
+    }
+
 }

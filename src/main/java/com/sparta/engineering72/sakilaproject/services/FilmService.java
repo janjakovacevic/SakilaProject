@@ -22,7 +22,7 @@ public class FilmService {
     }
 
     public List<Film> getAllFilms(){
-        return (List<Film>)filmRepository.findAll();
+        return filmRepository.findAll();
     }
 
     public Film getFilmByID(int id){
@@ -49,8 +49,12 @@ public class FilmService {
         return filmRepository.getAllFilmsByActor(id);
     }
 
-    @Transactional
-    public void createFilm(Film film) {
+    public void save(Film film) {
         filmRepository.save(film);
     }
+
+    public void deleteFilmById(int id) {
+        filmRepository.deleteById(id);
+    }
+
 }
