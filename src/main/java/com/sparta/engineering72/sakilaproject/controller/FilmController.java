@@ -9,6 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -56,14 +59,25 @@ public class FilmController {
     @RequestMapping("/new")
     public String showNewProductPage(Model model) {
         Film film = new Film();
+
         model.addAttribute("film", film);
-//        film.
+
+//        filmService.getAllSpecialFeatures
+
+//        String releaseYear = "";
+//        model.addAttribute("releaseYear", releaseYear);
+//        LocalDate localDate = LocalDate.parse(releaseYear);
+//        film.setReleaseYear(localDate);
 
         return "/owner/create-new-film";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("film") Film film) {
+    public String saveProduct(@ModelAttribute("film") Film film, Model model) {
+        film.setLastUpdate(Timestamp.from(Instant.now()));
+        film.setReleaseYear(LocalDate.now().getYear()); //Fixme make it a choice
+        //Fixme set language_id manually
+
         filmService.save(film);
 
         return "redirect:/films";

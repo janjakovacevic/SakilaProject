@@ -25,10 +25,10 @@
 						<td>Description:</td>
 						<td><input type="text" th:field="*{description}" /></td>
 					</tr>
-					<tr>
-						<td>Release Year:</td>
-						<td><input type="text" th:field="*{releaseYear}" /></td>
-					</tr>
+<!--					<tr>-->
+<!--						<td>Release Year:</td>-->
+<!--						<td><input type="date" th:value="${releaseYear}" th:field="${releaseYear}" /></td>-->
+<!--					</tr>-->
 					<tr>
 						<td>Rental Duration:</td>
 						<td><input type="text" th:field="*{rentalDuration}" /></td>
@@ -50,12 +50,12 @@
 						<td><input type="text" th:field="*{rating}" /></td>
 					</tr>
 					<tr>
+<!--						<select name="firstName" class="selection-menu">-->
+<!--							<option>ALL ACTORS</option>-->
+<!--							<option th:each="actor: ${allActors}" th:text="${actor.firstName}">-->
+<!--						</select>-->
 						<td>Special Features:</td>
 						<td><input type="text" th:field="*{specialFeatures}" /></td>
-					</tr>
-					<tr>
-						<td>Last Update:</td>
-						<td><input type="text" th:field="*{lastUpdate}" /></td>
 					</tr>
 					<tr>
 						<td colspan="2"><button class="btn btn-primary w-100" type="submit">Save</button> </td>
