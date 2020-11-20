@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/owner").hasRole("ADMIN")
                 .antMatchers(
                 "/",
+                            "/images/**",
                             "/home",
                             "/webjars/**",
                             "/css/**",
