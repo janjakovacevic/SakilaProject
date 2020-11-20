@@ -10,11 +10,16 @@
 <body>
 
 <div layout:fragment="content">
-    <h1 th:text="${customer != null} ? ${'Hello, ' + (customer.firstName.concat(' ' + customer.lastName).toUpperCase())} : 'Hello, Customer'">Welcome back, CUSTOMER </h1>
-
-    <form th:action="@{/logout}" method="post">
-        <input class="button" type="submit" value="Sign Out"/>
-    </form>
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 th:text="${customer != null} ? ${'Hello, ' + (customer.firstName.concat(' ' + customer.lastName).toUpperCase())} : 'Hello, Customer'">Welcome back, CUSTOMER </h1>
+        </div>
+        <div class="col-sm-4">
+            <form th:action="@{/logout}" method="post">
+                <input class="button" type="submit" value="Sign Out"/>
+            </form>
+        </div>
+    </div>
 
     <table class="table">
         <tr>
