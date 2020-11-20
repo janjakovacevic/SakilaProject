@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.sql.Timestamp;
@@ -80,4 +78,15 @@ public class FilmController {
         return "redirect:/films";
     }
 
+    @GetMapping("/owner/add-film")
+    public String addFilm(ModelMap modelMap) {
+        modelMap.addAttribute("film", new Film());
+        return "/owner/add-film";
+    }
+
+    @PostMapping("/owner/add-film")
+    public String addFilm(@ModelAttribute Film film, ModelMap modelMap){
+        filmService.createFilm(film);
+        return "redirect:/films";
+    }
 }

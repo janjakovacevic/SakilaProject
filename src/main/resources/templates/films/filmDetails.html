@@ -49,10 +49,6 @@
         </tr>
     </table>
 
-<!--    <form th:action="@{/rent}" method="post">-->
-<!--        <input class="button" type="submit" value="Rent Film"/>-->
-<!--    </form>-->
-
     <div sec:authorize="isAuthenticated()" class="rentButton">
         <form th:if="${available == true}" th:action="@{/rent/{id}(id=${details.filmId})}">
             <input class="button" type="submit" value="Rent Film" />

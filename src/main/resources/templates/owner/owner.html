@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       layout:decorator="layout/layout">
 <head>
     <meta charset="UTF-8">
@@ -9,33 +8,62 @@
 </head>
 <body>
 
-<div layout:fragment="content">
-    <h1 th:text="${staff != null} ? ${'Hello, ' + (staff.firstName.concat(' ' + staff.lastName).toUpperCase())} : 'Hello, Admin'">Welcome back, CUSTOMER </h1>
-    <table class="table">
-        <tr>
-            <th>First Name:</th>
-            <td  th:text="${staff != null} ? ${staff.firstName} : 'N/A'"></td>
-        </tr>
-        <tr>
-            <th>Last Name:</th>
-            <td th:text="${staff != null} ? ${staff.lastName} : 'N/A'"></td>
-        </tr>
-        <tr>
-            <th>Email:</th>
-            <td th:text="${staff != null} ? ${staff.email} : 'N/A'"></td>
-        </tr>
-        <tr>
-            <th>Staff ID:</th>
-            <td th:text="${staff != null} ? ${staff.staffId} : 'N/A'"></td>
-        </tr>
-    </table>
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 th:text="${staff != null} ? ${'Hello, ' + (staff.firstName.concat(' ' + staff.lastName).toUpperCase())} : 'Hello, Admin'">Welcome back, CUSTOMER </h1>
+                <table class="table">
+                    <tr>
+                        <th>First Name:</th>
+                        <td th:text="${staff != null} ? ${staff.firstName} : 'N/A'"></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td th:text="${staff != null} ? ${staff.lastName} : 'N/A'"></td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td th:text="${staff != null} ? ${staff.email} : 'N/A'"></td>
+                    </tr>
+                    <tr>
+                        <th>Staff ID:</th>
+                        <td th:text="${staff != null} ? ${staff.staffId} : 'N/A'"></td>
+                    </tr>
+                </table>
 
-    <form th:action="@{/logout}" method="post">
-        <input class="button" type="submit" value="Sign Out"/>
-    </form>
+                <form th:action="@{/logout}" method="post">
+                    <input class="button" type="submit" value="Sign Out"/>
+                </form>
+            </div>
+            <div class="col-md-4">
 
-</div>
-
+<!--                <ul id="top-navbar">-->
+<!--                    <li><a class="active hyperlink-text-home" href="/home">Home</a></li>-->
+<!--                    <li><a class="hyperlink-text-nav" href="/actors">Actors</a></li>-->
+<!--                    <li><a class="hyperlink-text-nav" href="/films">Films</a></li>-->
+<!--                    <li><a class="hyperlink-text-nav" href="/categories">Categories</a></li>-->
+<!--                </ul>-->
+<!--                -->
+                <table class="table">
+                    <tr>
+                        <th>Admin Actions</th>
+                    </tr>
+                    <tr>
+                        <td><a class="hyperlink-text" href="/owner/customers">View All Customers</a></td>
+                    </tr>
+                    <tr>
+                        <td>view films</td>
+                    </tr>
+                    <tr>
+                        <td>add customer</td>
+                    </tr>
+                    <tr>
+                        <td><a class="hyperlink-text" href="/owner/add-film">Add New Film</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

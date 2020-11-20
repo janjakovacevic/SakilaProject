@@ -3,6 +3,7 @@ package com.sparta.engineering72.sakilaproject.services;
 import com.sparta.engineering72.sakilaproject.entities.Film;
 import com.sparta.engineering72.sakilaproject.respositories.FilmRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +45,8 @@ public class FilmService {
         return filmRepository.getAllFilmsByActor(id);
     }
 
-
+    @Transactional
+    public void createFilm(Film film) {
+        filmRepository.save(film);
+    }
 }
