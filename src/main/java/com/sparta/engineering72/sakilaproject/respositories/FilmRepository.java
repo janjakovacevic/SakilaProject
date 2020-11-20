@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface FilmRepository extends JpaRepository<Film, Integer> {
 
+    @Query(value = "SELECT count(*) FROM film f INNER JOIN inventory i ON f.film_id = i.film_id WHERE i.film_id = :id",
+            nativeQuery = true)
+    Integer getAvailableFilmCount(Integer id);
+
     @Query(value = "SELECT * FROM film f INNER JOIN inventory i ON f.film_id = i.film_id",
             nativeQuery = true)
     List<Film> getAvailableFilms();

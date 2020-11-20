@@ -14,9 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -76,6 +79,35 @@ public class FilmController {
         }
         modelMap.addAttribute("rent","Rented");
         return "redirect:/films";
+    }
+
+
+//    @GetMapping(value = "/owner/films")
+//    public String searchFilm(@RequestParam(value = "search", defaultValue = "") String id, ModelMap modelMap) {
+//        List<Film> allFilms = null;
+//        Film film = null;
+//        if (id.equals("")) {
+//            allFilms = filmService.getAllFilms();
+//        } else {
+//            film = filmService.getFilmByID(Integer.valueOf(id));
+//        }
+//        modelMap.addAttribute("filmFound", film);
+//        modelMap.addAttribute("films", allFilms);
+//        return "owner/films";
+//
+//    }
+
+
+    @GetMapping("/owner/films")
+    public String getFilms(ModelMap modelMap) {
+        HashMap<Integer, Integer> filmCount = new HashMap<>();
+        List<Film> films = filmService.getAllFilms();
+        for(Film film : films){
+            filmCount.put(film.getFilmId(), filmService.getAvailableFilmCount(film.getFilmId()));
+        }
+        modelMap.addAttribute("filmCount", filmCount);
+        modelMap.addAttribute("films", films);
+        return "owner/films";
     }
 
     @GetMapping("/owner/add-film")

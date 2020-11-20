@@ -37,6 +37,10 @@ public class FilmService {
         return filmRepository.getAvailableFilms();
     }
 
+    public Integer getAvailableFilmCount(Integer id){
+        return filmRepository.getAvailableFilmCount(id);
+    }
+
     public List<Film> getFilmsByCategory(Integer id){
         return filmRepository.getAllFilmsByCategory(id);
     }
