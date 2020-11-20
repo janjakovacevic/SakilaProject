@@ -5,4 +5,5 @@ import org.hibernate.metamodel.model.convert.spi.JpaAttributeConverter;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FilmTextRepository extends JpaRepository<FilmText, Integer> {
+    FilmText getFilmTextById(Integer id);
 }

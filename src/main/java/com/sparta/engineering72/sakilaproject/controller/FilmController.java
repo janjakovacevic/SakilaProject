@@ -1,5 +1,6 @@
 package com.sparta.engineering72.sakilaproject.controller;
 
+import com.sparta.engineering72.sakilaproject.entities.Actor;
 import com.sparta.engineering72.sakilaproject.entities.Film;
 import com.sparta.engineering72.sakilaproject.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,11 @@ public class FilmController {
         modelMap.addAttribute("details", filmService.getFilmByID(id));
         return "films/filmDetails";
     }
+
+    public Film findFilmByID(Integer id) {
+        return filmService.getFilmByID(id);
+    }
+
+
 
 }

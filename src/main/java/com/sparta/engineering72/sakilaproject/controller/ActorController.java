@@ -58,4 +58,9 @@ public class ActorController {
     public Actor findActorById(Integer id) {
         return actorService.getActorByID(id);
     }
+
+    public String getActorFullNameFromID(Integer id){
+        Actor actor = actorService.getActorByID(id);
+        return actor.getFirstName() + " " + actor.getLastName();
+    }
 }
