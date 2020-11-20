@@ -1,5 +1,7 @@
 package com.sparta.engineering72.sakilaproject.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -11,7 +13,7 @@ public class Film {
     private int filmId;
     private String title;
     private String description;
-    private LocalDate releaseYear;
+    private int releaseYear;
     private Integer rentalDuration;
     private BigDecimal rentalRate;
     private Integer length;
@@ -52,11 +54,11 @@ public class Film {
 
     @Basic
     @Column(name = "release_year")
-    public LocalDate getReleaseYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(LocalDate releaseYear) {
+    public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
     }
 

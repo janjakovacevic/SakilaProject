@@ -1,6 +1,7 @@
 package com.sparta.engineering72.sakilaproject.services;
 
 import com.sparta.engineering72.sakilaproject.entities.Customer;
+import com.sparta.engineering72.sakilaproject.entities.Film;
 import com.sparta.engineering72.sakilaproject.respositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,9 @@ public class CustomerService {
 
     public Customer getCustomerByEmail(String email) {
         return customerRepository.getCustomerByEmail(email);
+    }
+
+    public void save(Customer customer) {
+        customerRepository.save(customer);
     }
 }

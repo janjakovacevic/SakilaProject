@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <title>NavBar</title>
@@ -14,6 +14,7 @@
 			<li><a class="hyperlink-text-nav" href="/actors">Actors</a></li>
 			<li><a class="hyperlink-text-nav" href="/films">Films</a></li>
 			<li><a class="hyperlink-text-nav" href="/categories">Categories</a></li>
+			<li><a class="hyperlink-text-nav" href="/owner/manage-films" sec:authorize="hasRole('ROLE_ADMIN')">Manage Films</a></li>
 			<li style="float:right"><a href="/login">Login</a></li>
 		</ul>
 		<br/>
