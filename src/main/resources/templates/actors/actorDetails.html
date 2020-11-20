@@ -16,8 +16,8 @@
         <table class="center-block">
 
             <tr>
-                <th>Film ID Number</th>
-                <th>Film Title</th>
+                <th>Title</th>
+                <th>Description</th>
             </tr>
             <tr th:each="film: ${films}">
                 <td><a class="hyperlink-text" th:href="@{/films/details(id=${film.filmId})}" th:text="${film.title}">Film</a></td>
