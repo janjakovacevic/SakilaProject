@@ -3,6 +3,7 @@ package com.sparta.engineering72.sakilaproject.services;
 import com.sparta.engineering72.sakilaproject.entities.Film;
 import com.sparta.engineering72.sakilaproject.respositories.FilmRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,10 @@ public class FilmService {
 
     public List<Film> getAvailableFilms(){
         return filmRepository.getAvailableFilms();
+    }
+
+    public Integer getAvailableFilmCount(Integer id){
+        return filmRepository.getAvailableFilmCount(id);
     }
 
     public List<Film> getFilmsByCategory(Integer id){

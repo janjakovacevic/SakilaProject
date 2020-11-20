@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorator="layout/layout">
 
@@ -48,7 +49,11 @@
         </tr>
     </table>
 
-
+    <div sec:authorize="isAuthenticated()" class="rentButton">
+        <form th:if="${available == true}" th:action="@{/rent/{id}(id=${details.filmId})}">
+            <input class="button" type="submit" value="Rent Film" />
+        </form>
+    </div>
 </div>
 
 </body>

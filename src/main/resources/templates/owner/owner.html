@@ -1,40 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="https://www.thymeleaf.org"
       layout:decorator="layout/layout">
-
 <head>
-    <title>Layout</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-
 <body>
 
-<div layout:fragment="content">
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 th:text="${staff != null} ? ${'Hello, ' + (staff.firstName.concat(' ' + staff.lastName).toUpperCase())} : 'Hello, Admin'">Welcome back, CUSTOMER </h1>
+                <table class="table">
+                    <tr>
+                        <th>First Name:</th>
+                        <td th:text="${staff != null} ? ${staff.firstName} : 'N/A'"></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td th:text="${staff != null} ? ${staff.lastName} : 'N/A'"></td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td th:text="${staff != null} ? ${staff.email} : 'N/A'"></td>
+                    </tr>
+                    <tr>
+                        <th>Staff ID:</th>
+                        <td th:text="${staff != null} ? ${staff.staffId} : 'N/A'"></td>
+                    </tr>
+                </table>
 
-    <h1>Account page</h1>
-
-    <p>Welcome to your account</p>
-
-    <table>
-        <tr>
-            <th>First Name:</th>
-            <td th:text="${staff.firstName}">First Name</td>
-        </tr>
-        <tr>
-            <th>Last Name:</th>
-            <td th:text="${staff.lastName}">Last Name</td>
-        </tr>
-        <tr>
-            <th>Email:</th>
-            <td th:text="${staff.email}">Email</td>
-        </tr>
-    </table>
-
-    <form th:action="@{/logout}" method="post">
-        <input class="button" type="submit" value="Sign Out"/>
-    </form>
-
-</div>
+                <form th:action="@{/logout}" method="post">
+                    <input class="button" type="submit" value="Sign Out"/>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <th>Admin Actions</th>
+                    </tr>
+                    <tr>
+                        <td><a class="hyperlink-text" href="/owner/customers">View All Customers</a></td>
+                    </tr>
+                    <tr>
+                        <td><a class="hyperlink-text" href="/owner/films">View All Films</a></td>
+                    </tr>
+                    <tr>
+                        <td>add customer</td>
+                    </tr>
+                    <tr>
+                        <td><a class="hyperlink-text" href="/owner/add-film">Add New Film</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

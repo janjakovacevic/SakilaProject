@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private StaffService staffService;
 
     @Autowired
-    private SimpleAuthenticationSuccessHandler successHandler;
+    private SuccessHandler successHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception { //Defines which URL paths should be secured and which should not
@@ -41,12 +41,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/categories/**"
                             ).permitAll() //Do not require authentication
                 .anyRequest().authenticated()
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
                 .formLogin().successHandler(successHandler)
                 .loginPage("/login").permitAll() //Custom login page; Everyone is allowed to view
                 .and()
                 .logout()
-                .permitAll();
+                .and().exceptionHandling().accessDeniedPage("/error");
+//                .permitAll();
     }
 
     @Bean

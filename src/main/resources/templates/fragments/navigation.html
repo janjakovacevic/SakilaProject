@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <title>NavBar</title>
@@ -14,7 +15,21 @@
 			<li><a class="hyperlink-text-nav" href="/actors">Actors</a></li>
 			<li><a class="hyperlink-text-nav" href="/films">Films</a></li>
 			<li><a class="hyperlink-text-nav" href="/categories">Categories</a></li>
-			<li><a class="hyperlink-text-nav" href="/owner/manage-films" sec:authorize="hasRole('ROLE_ADMIN')">Manage Films</a></li>
+      <li><a class="hyperlink-text-nav" href="/owner/manage-films">Manage Films</a></li>
+			<li style="float:right">
+			<span sec:authorize="isAuthenticated()">
+				<span sec:authentication="name"></span>
+				<span sec:authentication="principal.authorities"></span>
+                    <a th:href="@{/owner}">Owner Page</a>
+			</span>
+			</li>
+			<li style="float:right">
+			<span sec:authorize="isAuthenticated()">
+				<span sec:authentication="name"></span>
+				<span sec:authentication="principal.authorities"></span>
+                    <a th:href="@{/customer}">Customer Page</a>
+                </span>
+			</li>
 			<li style="float:right"><a href="/login">Login</a></li>
 		</ul>
 		<br/>
