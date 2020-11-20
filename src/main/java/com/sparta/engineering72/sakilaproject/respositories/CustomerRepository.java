@@ -17,4 +17,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     Customer getCustomerByCustomerId(Integer id);
     Customer getCustomerByEmail(String email);
+
+    @Query(value = "SELECT COUNT(*) FROM customer c",
+            nativeQuery = true)
+    Integer getCustomerCount();
 }

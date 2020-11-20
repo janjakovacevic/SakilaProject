@@ -31,4 +31,8 @@ public class CustomerService {
     public void save(Customer customer) {
         customerRepository.save(customer);
     }
+
+    public Integer getCustomerCount(){
+        return customerRepository.getCustomerCount();
+    }
 }

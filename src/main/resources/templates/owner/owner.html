@@ -44,16 +44,33 @@
                         <td><a class="hyperlink-text" href="/owner/customers">View All Customers</a></td>
                     </tr>
                     <tr>
-                        <td><a class="hyperlink-text" href="/owner/films">View All Films</a></td>
+                        <td><a class="hyperlink-text" href="/films">View All Films</a></td>
                     </tr>
                     <tr>
-                        <td>add customer</td>
+                        <td><a class="hyperlink-text" href="/newCustomer">Add Customer</a></td>
                     </tr>
                     <tr>
-                        <td><a class="hyperlink-text" href="/owner/add-film">Add New Film</a></td>
+                        <td><a class="hyperlink-text" href="/new">Add New Film</a></td>
+                    </tr>
+                    <tr>
+                        <td><a class="hyperlink-text" href="owner/manage-films">Manage Films</a></td>
                     </tr>
                 </table>
             </div>
+            <table>
+                <tr>
+                    <th>Available Films</th>
+                    <td>
+                        <a class="hyperlink-text" th:href="@{/owner/films}" th:text="${inventory}">Details</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Total Customers</th>
+                    <td>
+                        <a class="hyperlink-text" th:href="@{/owner/customers}" th:text="${customers}">Details</a>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 

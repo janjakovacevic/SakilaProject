@@ -19,4 +19,8 @@ public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
         nativeQuery = true)
     void deleteInventoryByInventoryId(@Param("id")Integer id);
 
+    @Query(value = "SELECT COUNT(*) FROM inventory i",
+            nativeQuery = true)
+    Integer getInventoryCount();
+
 }

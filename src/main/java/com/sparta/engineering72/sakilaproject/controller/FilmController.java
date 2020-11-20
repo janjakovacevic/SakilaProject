@@ -55,6 +55,7 @@ public class FilmController {
         else {
             films = filmService.getFilmsByTitle(filter);
         }
+//        modelMap.addAttribute("title", filmService.getFilmsByTitle(title));
         modelMap.addAttribute("films", films);
         modelMap.addAttribute("availableFilms", filmService.getAvailableFilms());
         modelMap.addAttribute("allFilms", filmService.getAllFilms());
@@ -62,8 +63,7 @@ public class FilmController {
     }
 
     @GetMapping("/films/details")
-    public String getFilmDetails(ModelMap modelMap,
-                                 @RequestParam(value = "id") Integer id) {
+    public String getFilmDetails(ModelMap modelMap, @RequestParam(value = "id") Integer id) {
         Film film = filmService.getFilmByID(id);
         boolean available = filmService.getAvailableFilms().contains(film);
         modelMap.addAttribute("available", available);
@@ -89,22 +89,14 @@ public class FilmController {
         return "redirect:/films";
     }
 
-
-    @GetMapping("/owner/films")
-    public String getFilms(ModelMap modelMap) {
-        HashMap<Integer, Integer> filmCount = new HashMap<>();
+    @GetMapping("/owner/manage-films")
+    public String getFilmDetails(ModelMap modelMap) {
         List<Film> films = filmService.getAllFilms();
+        HashMap<Integer, Integer> filmCount = new HashMap<>();
         for(Film film : films){
             filmCount.put(film.getFilmId(), filmService.getAvailableFilmCount(film.getFilmId()));
         }
         modelMap.addAttribute("filmCount", filmCount);
-        modelMap.addAttribute("films", films);
-        return "owner/films";
-    }
-
-    @GetMapping("/owner/manage-films")
-    public String getFilmDetails(ModelMap modelMap) {
-        List<Film> films = filmService.getAllFilms();
         modelMap.addAttribute("films", films);
         return "/owner/manage-films";
     }
@@ -133,7 +125,7 @@ public class FilmController {
 
         filmService.save(film);
 
-        return "redirect:/films";
+        return "redirect:/owner/manage-films";
     }
 
     @RequestMapping("/edit/{id}")
@@ -150,5 +142,4 @@ public class FilmController {
         filmService.deleteFilmById(id);
         return "redirect:/owner/manage-films";
     }
-
 }

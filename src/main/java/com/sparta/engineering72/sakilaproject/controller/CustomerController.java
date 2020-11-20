@@ -73,9 +73,9 @@ public class CustomerController {
                                          @PathVariable(name = "id") int id) {
         Customer customer = customerService.getCustomerByID(id);
         List<Order> ordersList = new ArrayList<>();
-        if(customer != null){
+        if (customer != null) {
             List<Rental> customersRentals = rentalService.getRentalsByCustomer(id);
-            for(Rental rental : customersRentals){
+            for (Rental rental : customersRentals) {
                 int inventoryId = rental.getInventoryId();
                 Inventory inventory = inventoryService.getInventoriesById(inventoryId);
                 Film film = filmService.getFilmByID(inventory.getFilmId());
@@ -86,6 +86,7 @@ public class CustomerController {
         modelMap.addAttribute("history", ordersList);
         modelMap.addAttribute("customer", customer);
         return "owner/customerDetails";
+    }
       
     @RequestMapping("/newCustomer")
     public String showNewProductPage(Model model) {

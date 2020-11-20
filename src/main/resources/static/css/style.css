@@ -1846,3 +1846,14 @@ figure:nth-child(8) {
         opacity: 1;
     }
 }
+
+input[type=email], .selection-menu {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-content: end;
+    text-align: left;
+}

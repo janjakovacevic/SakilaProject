@@ -18,8 +18,16 @@
             <tr>
                 <td class="no-border">
 <!--                    <label>-->
-<!--                        <input type="text" name="title" th:action="${film.title}">-->
+<!--                        <input type="text" name="title" th:text="${filter}">-->
 <!--                    </label>-->
+
+                    <label>
+                        <select name="title" class="selection-menu">
+                            <option>ALL FILMS</option>
+                            <option th:each="film: ${allFilms}" th:text="${film.title}">
+                        </select>
+                    </label>
+
                 </td>
                 <td class="no-border">
                     <input type="submit" value="Search" class="button">

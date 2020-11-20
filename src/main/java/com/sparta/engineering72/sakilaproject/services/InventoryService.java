@@ -29,4 +29,8 @@ public class InventoryService {
         inventoryRepository.deleteInventoryByInventoryId(id);
     }
 
+    public Integer getInventoryCount(){
+        return inventoryRepository.getInventoryCount();
+    }
+
 }

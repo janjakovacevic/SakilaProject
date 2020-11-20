@@ -26,13 +26,14 @@
 					<th>Rating</th>
 					<th>Length</th>
 					<th>Replacement Cost</th>
+					<th>Available</th>
 					<th>Action</th>
 				</tr>
 				</thead>
 				<tbody>
 				<tr th:each="film : ${films}">
 					<td th:text="${film.filmId}">Film ID</td>
-					<td th:text="${film.title}">Title</td>
+					<td><a class="hyperlink-text" th:href="@{/films/details(id=${film.filmId})}" th:text="${film.title}">Film</a></td>
 					<td th:text="${film.description}">Description</td>
 					<td th:text="${film.releaseYear}">Release Year</td>
 					<td th:text="${film.rentalDuration}">Rental Duration</td>
@@ -40,6 +41,7 @@
 					<td th:text="${film.rating}">Rating</td>
 					<td th:text="${film.length}">Length</td>
 					<td th:text="${film.replacementCost}">Replacement Cost</td>
+					<td th:text="${filmCount.get(film.filmId)}">Availability</td>
 					<td>
 						<a th:href="@{'/edit/' + ${film.filmId}}">Edit</a>
 						&nbsp;&nbsp;&nbsp;
