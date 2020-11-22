@@ -11,6 +11,34 @@
     <div align="center">
         <h1>Customers Overview</h1>
         <br/><br/>
+
+
+        <form class="filter" action="/owner/customers">
+            <table class="filter-table">
+                <tr>
+                    <td class="no-border">
+                        <label>
+                            First Name:
+                            <select name="firstName" class="selection-menu">
+                                <option>ALL CUSTOMERS</option>
+                                <option th:each="customer: ${allCustomers}" th:text="${customer.firstName}">
+                            </select>
+
+                            Last Name:
+                            <select name="lastName" class="selection-menu">
+                                <option>ALL CUSTOMERS</option>
+                                <option th:each="customer: ${allCustomers}" th:text="${customer.lastName}">
+                            </select>
+                        </label>
+                    </td>
+                    <td class="no-border">
+                        <input type="submit" value="Search" class="button">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
         <table border="1" cellpadding="10">
             <thead>
                 <tr>

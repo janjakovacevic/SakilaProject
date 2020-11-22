@@ -1,7 +1,6 @@
 package com.sparta.engineering72.sakilaproject.services;
 
 import com.sparta.engineering72.sakilaproject.entities.Customer;
-import com.sparta.engineering72.sakilaproject.entities.Film;
 import com.sparta.engineering72.sakilaproject.respositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +17,18 @@ public class CustomerService {
 
     public List<Customer> getAllCustomers(){
         return customerRepository.findAll();
+    }
+
+    public List<Customer> getCustomersByFirstName(String firstName){
+        return customerRepository.getCustomersByFirstName(firstName);
+    }
+
+    public List<Customer> getCustomersByLastName(String lastName){
+        return customerRepository.getCustomersByLastName(lastName);
+    }
+
+    public List<Customer> getCustomersByFullName(String firstName, String lastName){
+        return customerRepository.getCustomersByFullName(firstName, lastName);
     }
 
     public Customer getCustomerByID(int id){
