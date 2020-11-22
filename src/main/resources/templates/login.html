@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  xmlns:th="http://www.thymeleaf.org"
-	  layout:decorator="layout/layout">
+	  layout:decorator="layout/layout" lang="en">
 
 <head>
-<title>Login</title>
+	<title>Login</title>
 </head>
 
 <body>
-
 	<div layout:fragment="content">
-
 		<div class="row">
 			<div class="col-md-6">
 				<h1>Login page</h1>
 
 				<p>Please enter your credentials</p>
 
-				<form method="post"> <!-- th:action="@{/login}" -->
-<!--					<div th:if="${param.error}">-->
-<!--						<div class="alert alert-danger">Invalid username or password.-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					<div th:if="${param.logout}">-->
-<!--						<div class="alert alert-info">You have been logged out.</div>-->
-<!--					</div>-->
+				<div th:if="${param.error}">
+					Invalid username and password.
+				</div>
+				<div th:if="${param.logout}">
+					You have been logged out.
+				</div>
+				<form th:action="@{/login}" method="post">
 					<div class="form-group">
 						<label for="username">Username</label>
 						<input type="text" id="username" name="username" autofocus="autofocus" placeholder="Username"/>
@@ -34,18 +31,13 @@
 					<div class="form-group">
 						<div class="row">
 							<div  class="col-sm-12">
-								<input type="submit" name="login-submit" id="login-submit" class="button" value="Login" />
+								<input href="/hello" type="submit" name="login-submit" id="login-submit" class="button" value="Login"/>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-                        <span>New user? <a href="/" >Register here</a></span> <!-- th:href="@{/registration}" -->
 					</div>
 				</form>
 			</div>
 		</div>
-
 	</div>
-
 </body>
 </html>

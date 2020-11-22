@@ -1,50 +1,57 @@
 package com.sparta.engineering72.sakilaproject.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name="film_text")
-@NamedQuery(name="FilmText.findAll", query="SELECT f FROM FilmText f")
-public class FilmText implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "film_text", schema = "sakila")
+public class FilmText {
+    private int filmId;
+    private String title;
+    private String description;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="film_id", unique=true, nullable=false)
-	private short filmId;
+    @Id
+    @Column(name = "film_id")
+    public int getFilmId() {
+        return filmId;
+    }
 
-	@Lob
-	private String description;
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
+    }
 
-	@Column(nullable=false, length=255)
-	private String title;
+    @Basic
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
 
-	public FilmText() {
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public short getFilmId() {
-		return this.filmId;
-	}
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
 
-	public void setFilmId(short filmId) {
-		this.filmId = filmId;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getDescription() {
-		return this.description;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FilmText filmText = (FilmText) o;
+        return filmId == filmText.filmId &&
+                Objects.equals(title, filmText.title) &&
+                Objects.equals(description, filmText.description);
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getTitle() {
-		return this.title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(filmId, title, description);
+    }
 }

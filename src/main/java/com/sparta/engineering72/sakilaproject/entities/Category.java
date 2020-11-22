@@ -1,87 +1,59 @@
 package com.sparta.engineering72.sakilaproject.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Collection;
+import java.util.Objects;
 
 @Entity
-@Table(name="category")
-@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
-public class Category implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Category {
+    private int categoryId;
+    private String name;
+    private Timestamp lastUpdate;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="category_id", unique=true, nullable=false)
-	private byte categoryId;
+    @Id
+    @Column(name = "category_id")
+    public int getCategoryId() {
+        return categoryId;
+    }
 
-	@Column(name="last_update", nullable=false)
-	private Timestamp lastUpdate;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	@Column(nullable=false, length=25)
-	private String name;
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
 
-	//bi-directional many-to-one association to FilmCategory
-	@OneToMany(mappedBy="category")
-	private List<FilmCategory> filmCategories;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Category() {
-	}
+    @Basic
+    @Column(name = "last_update")
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
 
-	public byte getCategoryId() {
-		return this.categoryId;
-	}
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
-	public void setCategoryId(byte categoryId) {
-		this.categoryId = categoryId;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return categoryId == category.categoryId &&
+                Objects.equals(name, category.name) &&
+                Objects.equals(lastUpdate, category.lastUpdate);
+    }
 
-	public Timestamp getLastUpdate() {
-		return this.lastUpdate;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(categoryId, name, lastUpdate);
+    }
 
-	public void setLastUpdate(Timestamp lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public List<FilmCategory> getFilmCategories() {
-		return this.filmCategories;
-	}
-
-	public void setFilmCategories(List<FilmCategory> filmCategories) {
-		this.filmCategories = filmCategories;
-	}
-
-	public FilmCategory addFilmCategory(FilmCategory filmCategory) {
-		getFilmCategories().add(filmCategory);
-		filmCategory.setCategory(this);
-
-		return filmCategory;
-	}
-
-	public FilmCategory removeFilmCategory(FilmCategory filmCategory) {
-		getFilmCategories().remove(filmCategory);
-		filmCategory.setCategory(null);
-
-		return filmCategory;
-	}
-
-	@Override
-	public String toString() {
-		return "Category{" +
-				"categoryId=" + categoryId +
-				", lastUpdate=" + lastUpdate +
-				", name='" + name + '\'' +
-				", filmCategories=" + filmCategories +
-				'}';
-	}
 }

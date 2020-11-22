@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-<title>Header</title>
+<title>NavBar</title>
 </head>
 
 <body>
 
-	<nav class="navbar navbar-default" th:fragment="navigation">
+	<div th:fragment="navigation">
+		<ul id="top-navbar">
+			<li><a class="active hyperlink-text-home" href="/home">Home</a></li>
+			<li><a class="hyperlink-text-nav" href="/actors">Actors</a></li>
+			<li><a class="hyperlink-text-nav" href="/films">Films</a></li>
+			<li><a class="hyperlink-text-nav" href="/categories">Categories</a></li>
+			<li style="float:right">
+			<span sec:authorize="isAuthenticated()">
+				<span sec:authentication="name"></span>
+				<span sec:authentication="principal.authorities"></span>
+                    <a th:href="@{/owner}">Owner Page</a>
+			</span>
+			</li>
+			<li style="float:right">
+			<span sec:authorize="isAuthenticated()">
+				<span sec:authentication="name"></span>
+				<span sec:authentication="principal.authorities"></span>
+                    <a th:href="@{/customer}">Customer Page</a>
+                </span>
+			</li>
+			<li style="float:right"><a href="/login">Login</a></li>
+		</ul>
+		<br/>
+		<br/>
+		<br/>
+	</div>
 
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbarNavAltMarkup"
-					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">Home </a>
-			</div>
-
-			<div class="col-md-6 col-md-offset-2">
-				<input type="text" placeholder="Search..." name="search">
-			</div>
-
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a class="nav-item nav-link active" href="/login">Login</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 
 </body>
 
