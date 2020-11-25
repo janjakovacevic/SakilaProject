@@ -34,4 +34,9 @@ public class CategoryController {
         modelMap.addAttribute("films", filmService.getFilmsByCategory(id));
         return "categories/categoryDetails";    }
 
+        public Category getCategorybyId(Integer id)
+        {
+            return categoryService.getByCategoryId(id);
+        }
+
 }

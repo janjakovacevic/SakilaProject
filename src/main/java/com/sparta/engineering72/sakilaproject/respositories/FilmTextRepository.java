@@ -4,4 +4,5 @@ import com.sparta.engineering72.sakilaproject.entities.FilmText;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FilmTextRepository extends JpaRepository<FilmText, Integer> {
+    FilmText getFilmTextById(Integer id);
 }

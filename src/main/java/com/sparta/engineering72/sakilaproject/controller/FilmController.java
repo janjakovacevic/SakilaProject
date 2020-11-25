@@ -155,4 +155,10 @@ public class FilmController {
         filmService.deleteFilmById(id);
         return "redirect:/owner/manage-films";
     }
+
+
+    public Film findFilmByID(Integer id) {
+        return filmService.getFilmByID(id);
+    }
+
 }

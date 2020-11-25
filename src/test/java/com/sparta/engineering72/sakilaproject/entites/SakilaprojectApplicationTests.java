@@ -1,14 +1,17 @@
 package com.sparta.engineering72.sakilaproject.entites;
 
+import com.sparta.engineering72.sakilaproject.controller.CustomerController;
 import com.sparta.engineering72.sakilaproject.controller.MainController;
-import org.junit.jupiter.api.Test;
+import com.sparta.engineering72.sakilaproject.services.CategoryService;
+import com.sparta.engineering72.sakilaproject.services.CustomerService;
+import com.sparta.engineering72.sakilaproject.services.FilmCategoryService;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-class SakilaprojectApplicationTests {
 
+public class SakilaprojectApplicationTests {
 
         @Test
         public void MainController1() {
@@ -17,17 +20,19 @@ class SakilaprojectApplicationTests {
             assertEquals(result, "home");
         }
 
-         public void MainController2() {
-        MainController mainController = new MainController();
-        String result = mainController.account();
-        assertEquals(result, "account");
-         }
+        @Test
+        public void MainController2() {
+          MainController mainController = new MainController();
+          String result = mainController.account();
+          assertEquals(result, "account");
+        }
 
-    public void MainController3() {
-        MainController mainController = new MainController();
-        String result = mainController.login();
-        assertEquals(result, "login");
+        @Test
+        public void MainController3() {
+          MainController mainController = new MainController();
+          String result = mainController.login();
+          assertEquals(result, "login");
+        }
+
+
     }
-    }
-
-
