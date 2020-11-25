@@ -18,7 +18,6 @@
             <tr>
                 <td class="no-border">
                     <label>
-                        Film Title:
                         <select name="title" class="selection-menu">
                             <option>ALL FILMS</option>
                             <option th:each="film: ${allFilms}" th:text="${film.title}">
@@ -31,12 +30,14 @@
             </tr>
         </table>
     </form>
-    <table>
+    <table style="text-align-last: center;">
         <tr>
+            <th>Availability</th>
             <th>Film Title</th>
             <th>Film Description</th>
         </tr>
         <tr th:each="film: ${films}">
+            <td  th:text="${availableFilms.contains(film)} ? Available : Rented"></td>
             <td><a class="hyperlink-text" th:href="@{films/details(id=${film.filmId})}" th:text="${film.title}">Film</a></td>
             <td th:text="${film.description}" th:action="${film.filmId}">Film Info</td>
         </tr>

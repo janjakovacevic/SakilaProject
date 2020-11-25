@@ -36,3 +36,25 @@ _currently serves as a document for the team to keep track of sprints_
     - figuring out thymeleaf
     - struggled testing thymeleaf and using mocking tools
     
+**Spring 2 - Development (Thursday all-day)**
+  - Work Done:
+    - login feature with permissions completed
+    - page authorisation implemented
+    - customer page completed 
+    - owner page completed
+    - added hyperlinks to all films and customers
+    - rent film feature
+    - added styling
+    - 65% code coverage
+  - Successes:
+    - login completed
+    - customer can see their infomation and film rent history
+    - owner can see all customer and film information
+    - customer can rent a film
+    - better understanding of thymeleaf
+    - progress on styling
+    - big progress on mock testing
+  - Challenges:
+    - styling needs more work
+    - struggling with registration forms
+    - struggling editing/removing entries from the database

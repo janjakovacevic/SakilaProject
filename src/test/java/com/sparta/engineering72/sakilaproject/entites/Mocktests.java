@@ -679,9 +679,6 @@ public class Mocktests{
 
     }
 
-
-
-
     @Test
     public void testCategorybyTimeStamp() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());

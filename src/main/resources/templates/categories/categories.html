@@ -10,28 +10,8 @@
 <body>
 
 <div layout:fragment="content">
-
-    <h1 style="text-align: center">BROWSE OUR CATEGORIES</h1>
-
-<!--    <form class="filter" action="/films">-->
-<!--        <table>-->
-<!--            <tr>-->
-<!--                <td class="no-border">-->
-<!--                    <label>-->
-<!--                        Category Name:-->
-<!--                        <select name="genre" class="selection-menu">-->
-<!--                            <option>ALL GENRE</option>-->
-<!--                            <option th:each="category: ${allCategories}" th:text="${category.name}">-->
-<!--                        </select>-->
-<!--                    </label>-->
-<!--                </td>-->
-<!--                <td class="no-border">-->
-<!--                    <input type="submit" value="Search" class="button">-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </form>-->
-    <table>
+    <h1 style="text-align: center;">BROWSE OUR CATEGORIES</h1>
+    <table style="text-align-last: center;">
         <tr>
             <th>Category Name</th>
         </tr>
@@ -39,8 +19,6 @@
             <td><a class="hyperlink-text" th:href="@{categories/details(id=${category.categoryId})}" th:text="${category.name}"></a></td>
         </tr>
     </table>
-
-
 </div>
 
 </body>

@@ -1660,6 +1660,15 @@ th {
     color: white;
 }
 
+.th-centered{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: var(--primary);
+    color: white;
+    font-weight: bold;
+}
+
 .hyperlink-text{
     font-weight: bold;
     color: #111111;
@@ -1667,7 +1676,7 @@ th {
     margin: 8px 0;
     display: inline-block;
     align-content: end;
-    text-align: left;
+    text-align: center;
 }
 
 .hyperlink-text:hover{
@@ -1730,4 +1739,15 @@ li a:hover:not(.active) {
 
 .active {
     background-color: var(--primary);
+}
+
+input[type=email], .selection-menu {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-content: end;
+    text-align: left;
 }

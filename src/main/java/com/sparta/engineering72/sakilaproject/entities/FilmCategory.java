@@ -1,65 +1,60 @@
 package com.sparta.engineering72.sakilaproject.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-
+import java.util.Objects;
 
 @Entity
-@Table(name="film_category")
-@NamedQuery(name="FilmCategory.findAll", query="SELECT f FROM FilmCategory f")
-public class FilmCategory implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "film_category", schema = "sakila", catalog = "")
+@IdClass(FilmCategoryPK.class)
+public class FilmCategory {
+    private int filmId;
+    private int categoryId;
+    private Timestamp lastUpdate;
 
-	@EmbeddedId
-	private FilmCategoryPK id;
 
-	@Column(name="last_update", nullable=false)
-	private Timestamp lastUpdate;
+    @Id
+    @Column(name = "film_id")
+    public int getFilmId() {
+        return filmId;
+    }
 
-	//bi-directional many-to-one association to Category
-	@ManyToOne
-	@JoinColumn(name="category_id", nullable=false, insertable=false, updatable=false)
-	private Category category;
+    public void setFilmId(Integer filmId) {
+        this.filmId = filmId;
+    }
 
-	//bi-directional many-to-one association to Film
-	@ManyToOne
-	@JoinColumn(name="film_id", nullable=false, insertable=false, updatable=false)
-	private Film film;
+    @Id
+    @Column(name = "category_id")
+    public int getCategoryId() {
+        return categoryId;
+    }
 
-	public FilmCategory() {
-	}
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public FilmCategoryPK getId() {
-		return this.id;
-	}
+    @Basic
+    @Column(name = "last_update")
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
+    }
 
-	public void setId(FilmCategoryPK id) {
-		this.id = id;
-	}
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
 
-	public Timestamp getLastUpdate() {
-		return this.lastUpdate;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FilmCategory that = (FilmCategory) o;
+        return filmId == that.filmId &&
+                categoryId == that.categoryId &&
+                Objects.equals(lastUpdate, that.lastUpdate);
+    }
 
-	public void setLastUpdate(Timestamp lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
-
-	public Category getCategory() {
-		return this.category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public Film getFilm() {
-		return this.film;
-	}
-
-	public void setFilm(Film film) {
-		this.film = film;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(filmId, categoryId, lastUpdate);
+    }
 }
