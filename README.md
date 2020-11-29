@@ -37,7 +37,7 @@
 	- Customer: Will be able to see their own account information including which films they have rented
 		- Allows for personalised experience for each customer
 		- Able to rent a specific film
-	- Owner: Has all levels of access and can write to the database, i.e creating new customers and adding films. Can see all customer information and films that have been taken out
+	- Owner: Has all levels of access and can write to the database. Can see all customer information and films that have been taken out
 		- Allows for organised control when it comes to owners
 		- Able to update the information of a specific film
 		- Able to delete a specific film
@@ -114,7 +114,8 @@
 - Allow user to type the input, instead of filtering it
 - Allow search for films by language
 - Allow for changes in the inventory to be made to reflect the most up to date rental status
-- Edit/delete user functionality
+- Add film/customer functionality
+- Edit/delete customer functionality
 
 
 

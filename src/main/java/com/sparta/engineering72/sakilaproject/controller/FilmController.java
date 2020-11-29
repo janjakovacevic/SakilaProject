@@ -114,33 +114,6 @@ public class FilmController {
         return "/owner/manage-films";
     }
 
-    @RequestMapping("/new")
-    public String showNewProductPage(Model model) {
-        Film film = new Film();
-
-        model.addAttribute("film", film);
-
-//        filmService.getAllSpecialFeatures
-
-//        String releaseYear = "";
-//        model.addAttribute("releaseYear", releaseYear);
-//        LocalDate localDate = LocalDate.parse(releaseYear);
-//        film.setReleaseYear(localDate);
-
-        return "/owner/create-new-film";
-    }
-
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("film") Film film, Model model) {
-        film.setLastUpdate(Timestamp.from(Instant.now()));
-        film.setReleaseYear(LocalDate.now().getYear()); //Fixme make it a choice
-        //Fixme set language_id manually
-
-        filmService.save(film);
-
-        return "redirect:/owner/manage-films";
-    }
-
     @RequestMapping("/edit/{id}")
     public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("/owner/edit-film");

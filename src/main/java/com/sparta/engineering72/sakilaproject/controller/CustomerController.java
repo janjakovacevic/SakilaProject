@@ -98,32 +98,6 @@ public class CustomerController {
         modelMap.addAttribute("customer", customer);
         return "owner/customerDetails";
     }
-      
-    @RequestMapping("/newCustomer")
-    public String showNewProductPage(Model model) {
-        Customer customer = new Customer();
 
-        model.addAttribute("customer", customer);
-
-//        filmService.getAllSpecialFeatures
-
-//        String releaseYear = "";
-//        model.addAttribute("releaseYear", releaseYear);
-//        LocalDate localDate = LocalDate.parse(releaseYear);
-//        film.setReleaseYear(localDate);
-
-        return "/owner/create-new-customer";
-    }
-
-    @RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("film") Customer customer, Model model) {
-//        customer.setLastUpdate(Timestamp.from(Instant.now()));
-//        customer.getCreateDate(LocalDate.now().getYear()); //Fixme make it a choice
-//        //Fixme set store_id; address_id
-
-        customerService.save(customer);
-
-        return "redirect:/newCustomer";
-    }
 
 }
