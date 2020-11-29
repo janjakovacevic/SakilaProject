@@ -2,7 +2,6 @@ package com.sparta.engineering72.sakilaproject.controller;
 
 import com.sparta.engineering72.sakilaproject.entities.Actor;
 import com.sparta.engineering72.sakilaproject.services.ActorService;
-import com.sparta.engineering72.sakilaproject.services.FilmActorService;
 import com.sparta.engineering72.sakilaproject.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +16,11 @@ public class ActorController {
 
     private FilmService filmService;
     private ActorService actorService;
-    private FilmActorService filmActorService;
 
     @Autowired
-    public ActorController(FilmService filmService, ActorService actorService, FilmActorService filmActorService) {
+    public ActorController(FilmService filmService, ActorService actorService) {
         this.filmService = filmService;
         this.actorService = actorService;
-        this.filmActorService = filmActorService;
     }
 
     @GetMapping("/actors")
@@ -55,5 +52,10 @@ public class ActorController {
 
     public Actor findActorById(Integer id) {
         return actorService.getActorByID(id);
+    }
+
+    public String getActorFullNameFromID(Integer id){
+        Actor actor = actorService.getActorByID(id);
+        return actor.getFirstName() + " " + actor.getLastName();
     }
 }

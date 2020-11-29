@@ -14,6 +14,27 @@
 			<h1>Manage Films</h1>
 			<a href="/new">Create New Film</a>
 			<br/><br/>
+
+
+			<form class="filter" action="/owner/manage-films">
+				<table>
+					<tr>
+						<td class="no-border">
+							<label>
+								<select name="title" class="selection-menu">
+									<option>ALL FILMS</option>
+									<option th:each="film: ${allFilms}" th:text="${film.title}">
+								</select>
+							</label>
+						</td>
+						<td class="no-border">
+							<input type="submit" value="Search" class="button">
+						</td>
+					</tr>
+				</table>
+			</form>
+
+
 			<table border="1" cellpadding="10">
 				<thead>
 				<tr>

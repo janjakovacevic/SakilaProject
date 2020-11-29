@@ -90,14 +90,27 @@ public class FilmController {
     }
 
     @GetMapping("/owner/manage-films")
-    public String getFilmDetails(ModelMap modelMap) {
-        List<Film> films = filmService.getAllFilms();
+    public String getFilmDetails(ModelMap modelMap,
+                                 @RequestParam(value = "title", defaultValue = "ALL FILMS") String filter) {
+
+
+        List<Film> films;
+        if (filter.equals("ALL FILMS")){
+            films = filmService.getAllFilms();
+        }
+        else {
+            films = filmService.getFilmsByTitle(filter);
+        }
+
+        List<Film> allFilms = filmService.getAllFilms();
         HashMap<Integer, Integer> filmCount = new HashMap<>();
-        for(Film film : films){
+        for(Film film : allFilms){
             filmCount.put(film.getFilmId(), filmService.getAvailableFilmCount(film.getFilmId()));
         }
-        modelMap.addAttribute("filmCount", filmCount);
+
         modelMap.addAttribute("films", films);
+        modelMap.addAttribute("filmCount", filmCount);
+        modelMap.addAttribute("allFilms", films);
         return "/owner/manage-films";
     }
 
@@ -142,4 +155,10 @@ public class FilmController {
         filmService.deleteFilmById(id);
         return "redirect:/owner/manage-films";
     }
+
+
+    public Film findFilmByID(Integer id) {
+        return filmService.getFilmByID(id);
+    }
+
 }

@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <table class="table">
+    <table>
         <tr>
             <th>First Name:</th>
             <td  th:text="${customer != null} ? ${customer.firstName} : 'N/A'"></td>
@@ -41,11 +41,11 @@
     </table>
 
     <hr>
-    <h1 style="text-align:center;">Rented films</h1>
+    <h1 style="text-align:center;">Rented Films</h1>
     <hr>
 
     <form class="form-group" name="orders">
-        <table>
+        <table  style="text-align-last: center;">
             <tr>
                 <th>Film Title</th>
                 <th>Rental Date</th>

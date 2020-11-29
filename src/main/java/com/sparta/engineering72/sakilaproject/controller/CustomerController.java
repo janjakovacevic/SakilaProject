@@ -11,15 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -63,10 +59,25 @@ public class CustomerController {
     }
 
     @GetMapping("/owner/customers")
-    public String getCustomers(ModelMap modelMap) {
-        modelMap.addAttribute("customers", customerService.getAllCustomers());
+    public String getCustomers(ModelMap modelMap,
+                               @RequestParam(value = "firstName", defaultValue = "ALL CUSTOMERS") String firstNameFilter,
+                               @RequestParam(value = "lastName", defaultValue = "ALL CUSTOMERS") String lastNameFilter) {
+        List<Customer> customers;
+        if (firstNameFilter.equals("ALL CUSTOMERS") && lastNameFilter.equals("ALL CUSTOMERS")) {
+            customers = customerService.getAllCustomers();
+        } else if (lastNameFilter.equals("ALL CUSTOMERS")){
+            customers = customerService.getCustomersByFirstName(firstNameFilter);
+        } else if (firstNameFilter.equals("ALL CUSTOMERS")) {
+            customers = customerService.getCustomersByLastName(lastNameFilter);
+        } else {
+            customers = customerService.getCustomersByFullName(firstNameFilter, lastNameFilter);
+        }
+
+        modelMap.addAttribute("customers", customers);
+        modelMap.addAttribute("allCustomers", customerService.getAllCustomers());
         return "owner/customers";
     }
+
 
     @GetMapping("/owner/view/customers/{id}")
     public String showUsersRentalHistory(ModelMap modelMap,

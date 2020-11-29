@@ -13,7 +13,7 @@
     <h1 style="text-align: center;">BROWSE OUR CATEGORIES</h1>
     <table style="text-align-last: center;">
         <tr>
-            <th style="text-align: center">Category Name</th>
+            <th>Category Name</th>
         </tr>
         <tr th:each="category: ${allCategories}">
             <td><a class="hyperlink-text" th:href="@{categories/details(id=${category.categoryId})}" th:text="${category.name}"></a></td>
