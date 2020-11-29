@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface StaffRepository extends JpaRepository<Staff, Integer> {
-    Staff getStaffByFilmId(Integer id);
 
     @Query(value = "SELECT * FROM staff s WHERE s.username = :username",
             nativeQuery = true)

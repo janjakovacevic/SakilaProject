@@ -1,5 +1,6 @@
 package com.sparta.engineering72.sakilaproject.controller;
 
+import com.sparta.engineering72.sakilaproject.entities.Category;
 import com.sparta.engineering72.sakilaproject.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +13,11 @@ public class CategoryController {
 
     private FilmService filmService;
     private CategoryService categoryService;
-    private FilmCategoryService filmCategoryService;
 
     @Autowired
-    public CategoryController(FilmService filmService, CategoryService categoryService, FilmCategoryService filmCategoryService) {
+    public CategoryController(FilmService filmService, CategoryService categoryService) {
         this.filmService = filmService;
         this.categoryService = categoryService;
-        this.filmCategoryService = filmCategoryService;
     }
 
     @GetMapping("/categories")
@@ -34,8 +33,7 @@ public class CategoryController {
         modelMap.addAttribute("films", filmService.getFilmsByCategory(id));
         return "categories/categoryDetails";    }
 
-        public Category getCategorybyId(Integer id)
-        {
+        public Category getCategoryById(Integer id) {
             return categoryService.getByCategoryId(id);
         }
 

@@ -12,13 +12,9 @@ import java.util.List;
 public class FilmService {
 
     private final FilmRepository filmRepository;
-    private final InventoryService inventoryService;
-    private final FilmCategoryService filmCategoryService;
 
-    public FilmService(FilmRepository filmRepository, InventoryService inventoryService, FilmCategoryService filmCategoryService){
+    public FilmService(FilmRepository filmRepository){
         this.filmRepository = filmRepository;
-        this.inventoryService = inventoryService;
-        this.filmCategoryService = filmCategoryService;
     }
 
     public List<Film> getAllFilms(){

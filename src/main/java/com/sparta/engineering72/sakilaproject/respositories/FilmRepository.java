@@ -29,6 +29,5 @@ public interface FilmRepository extends JpaRepository<Film, Integer> {
 
     List<Film> findByTitle(String title);
     Film getFilmByFilmId(Integer id);
-    Actor getFilmActor(Actor actor);
 
 }
