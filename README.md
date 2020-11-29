@@ -23,6 +23,7 @@
       - [Owner Page](#owner-page)
       	- [Films' Details](#films-details)
       	- [Customers' Details](#customers-details)
+      - [Sign Out](#sign-out)
   * [**Future Work**](#future-work)
 
 
