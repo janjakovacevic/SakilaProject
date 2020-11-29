@@ -62,23 +62,52 @@
 ## **Screenshots**
 
 ### **Landing Page**
+- Once the application is started, the first page any user will see is the Landing Page that welcomes the user. User can choose further action from the navigation bar at the top of the screen.
+
+![landing](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/landing-page.png)
 
 ### **Browse Films**
+- Should a user choose to search all the available films, they would be directed to the page below. They can search for the film by the film title.
+
+![films](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/browse-films.png)
 
 #### **Film Details**
+- User has the option to view film details by clickin on the hyperlinked film title. They will be redirected to the following page. It is important to note the user will be asked to log in should they choose to click on the `Rent Film` button.
+
+![film_details](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/film-details.png)
 
 ### **Browse Actors**
+- User can also choose to search for actors using their first name, last name or both. It should be noted that by clicking on the actor ID, user will be displayed with all the films the selected actor appears in.
+
+![actors](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/browse-actors.png)
 
 ### **Login Page**
+- By selecting the `Login` button in the navigation bar, the user will be prompted for their credentials. They will only be logged in if the credentials are valid.
+
+![login](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/login-page.png)
 
 ### **Customer Page**
+- If the credentials entered correspond to a customer, they will be recognised as a customer and then redirected to the customer page where they will be able to view their information including the films they have rented in the past.
+
+![customer_page](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/customer-page.png)
 
 ### **Owner Page**
+- If the credentials entered correspond to an owner's crednetials, they will be recognised as an owner and then redirected to the owner page where they will be able to view their information, perform admin actions as well as have an insight in the current count of customers and available films.
+
+![owner_page](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/owner%20page.png)
 
 #### **Films' Details**
+- Should an owner want to take a closer look at the films the business offers, they can choose to select `View All Films` and they will be redirected to the following page. In addition to being able to browse for a specific film, they can view all the details for the selected film including the number of currently availble copies. They will also be able to performs `edit` or `delete` actions by selcting the corresponding option on `Action` column.
+
+![customers](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/films.png)
 
 #### **Customers' Details**
+- Should an owner want to take a closer look at the current customers of the business, they can choose to select `View All Customers` and they will be redirected to the following page. In addition to being able to browse for a specific customer, they will also be able to view their rental history by selecting `Detail` option in the `History` column.
 
+![customers](https://github.com/janjakovacevic/TheSakilaProject/blob/dev/sakila%20assets/customers.png)
+
+### **Sign Out**
+- Whenever the user chooses to sign out, all they have to do is navigate back to their profile page by selecting the `Customer Page` or `Owner Page` button (depending on their access level) in the top righ corner and then select the `Sign Out` button that can be found just above their user information.
 
 ## **Future Work**
 - Allow user to type the input, instead of filtering it
